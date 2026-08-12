@@ -1,0 +1,4 @@
+/Users/marcosbautista/Documents/GitHub/Estimation-of-epidemiological-parameters/Datos/COVID19MEXICO2020_2021_2022.csv. filter=lfs diff=lfs merge=lfs -text
+/Users/marcosbautista/Documents/GitHub/Estimation-of-epidemiological-parameters/Datos/COVID19MEXICO2020.csv. filter=lfs diff=lfs merge=lfs -text
+/Users/marcosbautista/Documents/GitHub/Estimation-of-epidemiological-parameters/Datos/COVID19MEXICO2021.csv. filter=lfs diff=lfs merge=lfs -text
+/Users/marcosbautista/Documents/GitHub/Estimation-of-epidemiological-parameters/Datos/COVID19MEXICO2022.csv. filter=lfs diff=lfs merge=lfs -text
