@@ -1,0 +1,74 @@
+%------------------------------------------------------------------
+% $Header : fcfm-3.4.6/cambios.txt,v 3.4.6 15/06/18 JMHL Exp$
+% $Log    : Resumen de cambios en formato tesis FCFM (BUAP) $
+% Revisión 3.4.6
+% 
+% $Header : fcfm-3.4.7/INSTRUCCIONES, CambiosAlFormato-2003-2019,
+%			v 3.4.7 Mayo,Junio/2019 MMP$
+% Revisión 3.4.7
+%------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+20 de junio del 2019
+
+- Se corrigió la numeración romana en el frontmatter.
+- Se corrigieron instrucciones para los mensajes en warnings. Detalles y detalles.
+- Se cambió el texto "Alumno" por "Estudiante"
+- Se agregó el parámetro: es-tabla al paquete babel para renombrar
+  correctamente 'Cuadro' por 'Tabla' sin usar renewcommand, ni dentro del 
+  archivo .cls (no funcionaba aquí) ni en el archivo principal de la tesis.
+----------------------------------------------------------------------------------------
+26 de enero del 2019
+
+- Se agregaron dos instrucciones para compatibilidad con latexml y generar 
+  tesis en formato xml y html.
+----------------------------------------------------------------------------------------
+Junio de 2018
+
+- Compilar la tesis con pdflatex. Usar imágenes en formato jpg, png o pdf.
+- Revisión y adecuación de los ejemplos.
+----------------------------------------------------------------------------------------
+Abril de 2018
+
+- Se añadieron todas las opciones actuales de grado en la FCFM. 
+- Se actualizó a UTF8 la codificación (es el estándar). Detalles y detalles.
+----------------------------------------------------------------------------------------
+15 de enero del 2018
+
+- Se añadieron las opciones de: 
+  fisapl (Lic. Física Aplicada)
+  lma (Lic. en Matemáticas Aplicadas)
+  pma1 (Maestría en Ciencias, Posgrado en Matemáticas)
+  pma2 (Doctorado en Ciencias, PM)
+
+- Se cambió a la nueva versión del escudo.
+
+- Revisar formato-detallado.tex para mayores instrucciones o utilizar alguno
+  de los archivos ejemplo-tesis-1.tex o ejemplo-tesis-2.tex como base.
+
+- OK Se quejan de las hojas en blanco, ¿no se pueden evitar?
+  Incluir en fcfmskel.tex y página web de instrucciones que pueden usar
+  mpe o pdfedit para eliminar las páginas en blanco (son parte del formato de libro).
+  De manera formal la respuesta es no es tan fácil, habría que reescribir el código.
+  La opción presentada de "solución" es mas sencilla y general.
+  
+- OK Falta actuaría y MC_EduMat
+----------------------------------------------------------------------------------------
+19 de septiembre del 2012
+
+- Se añaden comandos para generar tesis de maestría y doctorado en el 
+  Posgrado de Física Aplicada
+----------------------------------------------------------------------------------------
+10 de marzo del 2003
+
+- Se incluye un parche para poder tener el comando \vocalc{}
+  y se modifica el comando \makeacta para poder usar \vocalc{}
+
+- Se incluye código para corregir el problema de los encabezados. Para más información 
+  consultar en la página "LaTeX bug database" el error latex/2803:
+  www.latex-project.org/cgi-bin/ltxbugs2html?introduction=yes&state=open
+
+- Se agregan en fcfmskel.tex dos comandos \renewcomand para obtener los
+  letreros Índice de tablas y Tabla en lugar de Índice de cuadros y Cuadro.
+----------------------------------------------------------------------------------------

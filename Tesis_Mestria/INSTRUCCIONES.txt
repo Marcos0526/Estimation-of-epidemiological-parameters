@@ -1,0 +1,57 @@
+La plantilla y formato de tesis que ofrece la FCFM se diseñaron en el año 2001
+y desde entonces se les han hecho modificaciones y agregados para mantenerlos 
+actualizados, dichos cambios se redactan en el archivo CambiosAlFormato-2003-2019.txt
+
+El archivo InstructivoOriginal-2003.pdf fue redactado en el año 2003 y detalla 
+el uso de la plantilla fcfmtesis.cls, sin embargo, algunos datos pueden resultar 
+obsoletos porque el archivo no se ha modificado desde ese año, aún así, lo esencial
+del uso de la plantilla se encuentra ahí y se debe leer después de leer este archivo.
+
+Se prorpocionan dos carpetas:
+1. formato-detallado, en esta carpeta se encuentran los archivos:
+   a) fcfmtesis.cls, esencial para elaborar una tesis, 
+   b) escudo-2.png, escudo actual de la BUAP,
+   c) parche.tex, necesario si habrán tres vocales en el Comité,
+   d) formato-detallado.tex, archivo principal que manda a llamar a los archivos
+	  anteriores y además a los archivos: formato-cap1.tex (contenido ejemplo de un 
+	  capítulo) y formato-a1.tex (contenido ejemplo de un apéndice).
+	  Este archivo explica cada instrucción que se utiliza para redactar una tesis.
+2. formato-ejemplo, en esta carpeta se encuentra un ejemplo particular de una tesis.
+
+
+Es necesario recalcar que, actualmente, Biblioteca Central de la BUAP utiliza el
+programa latexml para convertir los archivos en formato .doc, .docx y .tex en 
+formato html, por tanto, el manual oficial de latexml versión 0.8.3 (agosto de 2018)
+lista los únicos paquetes que se pueden utilizar para que la conversión funcione,
+es decir, NO SE PUEDE utilizar ningún paquete que no esté listado a continuación.
+
+a0size, a4, a4wide, aas macros, aasms, aaspp, aastex, accents, acronym, ae, aecompl, 
+afterpage, algc, algcompatible, algmatlab, algorithm, algorithm2e, algorithmic, 
+algorithmicx, algpascal, algpseudocode, alltt, amsbsy, amscd, amsfonts, amsgen, 
+amsmath, amsopn, amsppt, amsrefs, amssymb, amstex, amstext, amsthm, amsxtra, 
+apjfonts, appendix, array, attachfile, authblk, avant, babel, balance, bbm, bbold, 
+beton, bm, bookman, booktabs, braket, breakurl, breqn, calc, cancel, caption, cases, 
+ccfonts, chancery, charter, circuitikz, cite, citesort, cleveref, cmbright, color, 
+colordvi, colortbl, comment, concmath, courier, crop, cropmark, csquotes, dcolumn, 
+deluxetable, doublespace, dsfont, ellipsis, elsart, empheq, emulateapj, emulateapj5, 
+endnotes, enumerate, enumitem, epigraph, epsf, epsfig, epstopdf, esint, etex, 
+etoolbox, eucal, eufrak, euler, eulervm, eurosym, euscript, exscale, fancyhdr, 
+fix-cm, fixltx2e, flafter, fleqn, float, floatfig, floatflt, floatpag, flowchart, 
+flushend, fontenc, fontspec, footmisc, fourier, framed, fullpage, gensymb, geometry, 
+german, graphics, graphicx, grffile, helvet, here, hhline, html, hyperref, hyperxmp, 
+icml2016, icml2017, icml2018, ifluatex, ifpdf, ifthen, ifvtex, ifxetex, import, 
+indentfirst, inputenc, iopams, jheppub, keyval, lastpage, latexml, latexsym, lineno, 
+lipsum, listings, listingsutf8, llamapun, lmodern, longtable, lscape, luximono, 
+lxRDFa, makecell, makeidx, marvosym, mathbbol, mathpazo, mathpple, mathptm, mathptmx, 
+mathrsfs, mathtools, microtype, mleftright, multicol, multido, multirow, nameref, 
+natbib, newcent, newfloat, newlfont, newtxmath, newtxtext, ngerman, nicefrac, 
+ntheorem, numprint, palatino, paralist, parskip, pdflscape, pdfpages, pdfsync, pgf, 
+pgfplots,pifont, placeins, preview, psfig, pslatex, pspicture, pst-grad, pst-node,
+pstricks, pxfonts, ragged2e, relsize, revsymb, revtex, revtex4, rotate, rotating,
+rsfs, scalefnt, sectsty, setspace, showkeys, siunitx, slashed, soul, srcltx, 
+stfloats, stmaryrd, subcaption, subfig, subfigure, subfloat, supertabular, svg, 
+t1enc, tablefootnote, tabularx, tabulary, textcase, textcomp, texvc, theorem, 
+thmtools, threeparttable, tikz-3dplot, tikz, times, titlesec, titling, tocbibind, 
+todonotes, tracefnt,transparent, turing, txfonts, type1cm, ulem, units, upgreek, 
+upref, url, utopia, verbatim, wasysym, wiki, wrapfig, xargs, xcolor, xkeyval, 
+xkvview, xspace, xunicode, yfonts

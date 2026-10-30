@@ -1,0 +1,101 @@
+\chapter{Epidemias}
+
+
+A lo largo de toda nuestra historia como especie, nos hemos enfrentado a problemas de salud, dentro de los cuales los virus y las bacterias han sido parte fundamental de estas situaciones. No importa cuánto logremos desarrollar la medicina: así como nosotros evolucionamos como especie, también lo hace nuestro ambiente, por lo que estamos en una lucha constante por sobrevivir.
+
+Recientemente, el mundo se enfrentó a la pandemia de COVID-19, un evento que impactó al mundo entero y que, a pesar de todo el conocimiento que se tiene sobre el área, vino a demostrar que es necesario seguir desarrollando temas epidemiológicos para poder afrontar este tipo de problemas.
+
+Es importante notar que este evento no ha sido el único del que tenemos registro. Desde la antigüedad, la humanidad se ha enfrentado a diversas epidemias, siendo una de las más antiguas de las que se tiene registro la plaga de Atenas, que data aproximadamente de los años 430 a 426 a.\,C.
+
+Fue gracias a Tucídides, militar e historiador ateniense, que se tiene un registro detallado de lo ocurrido en esta epidemia. Él fue quien recabó distinta información sobre la enfermedad que azotó al pueblo ateniense, registrada en un texto en el que se lee:
+
+\begin{quote}
+«Descrito con gran detalle [\dots] incluidos los síntomas y la progresión de la enfermedad. También dio algunas cifras exactas, como que 1050 de 4000 soldados en una expedición murieron a causa de la enfermedad. La enfermedad descrita tan minuciosamente por Tucídides, incluso hasta el hecho de que los perros que comieron los cadáveres también sufrieron, ha sido la fuente de numerosos artículos durante cientos de años con casos presentados (con gran convicción y defendidos vehementemente) para un increíble rango de enfermedades».\cite{murray1989}
+\end{quote}
+
+Otro caso, posiblemente el más famoso después del COVID-19, es el de la peste negra, la cual:
+
+\begin{quote}
+«se convirtió en una pandemia de tal magnitud que no solo sacudió los cimientos económicos y sociales del Viejo Mundo, sino que cambió el curso de la historia. Tuvo su origen en Asia, se propagó a Europa, y su influencia llegó hasta el norte de África. El contagio llegó por barco, pues en aquellos tiempos empezaron a abrirse nuevas rutas de intercambio, ya que Europa empezaba a tener un avance económico y comercial».\cite{german2021}
+\end{quote}
+
+Se estima que la peste negra causó entre 75 y 200 millones de muertes en el mundo, mientras que en Europa murió entre el 30\,\% y el 60\,\% de la población.
+
+Estos y demás ejemplos que podemos seguir tratando nos dan una idea de por qué es importante estudiar este tipo de fenómenos, ya que las implicaciones sociales, culturales, entre otras, son de gran relevancia para el bienestar colectivo.
+
+\section{¿Cómo se comporta una epidemia?}
+
+Ahora que tenemos el contexto sobre la importancia de estudiar las epidemias, podemos plantearnos varias preguntas que nos ayudarán a abordar esta área.
+
+Definamos los siguientes conceptos, que nos darán la pauta para establecer las reglas que seguirá nuestro estudio.
+
+Una epidemia es ``cuando el número de casos de una enfermedad excede lo esperado en una comunidad, región o país, donde se especifican claramente la región geográfica y el periodo temporal'' \cite{pelaez2020}.
+
+Una infección, en términos generales, es ``la invasión de un organismo por parte de otro más pequeño'' \cite{vynnycky2010}. Con esta definición podemos hacer referencia no únicamente a los casos de enfermedades en humanos, sino también a que la infección es una situación común en la naturaleza.
+
+Entonces, lo importante es entender la dinámica de una pandemia. Con lo definido anteriormente, se trata de preguntarnos cómo ocurre la transición del estado de una persona no infectada a un estado de infectada, y esto a gran escala.
+
+Dada la naturaleza de la enfermedad que se estudia, la cantidad de suposiciones que se tomarán en cuenta es considerable, ya que no es posible tratar todos los casos de la misma manera. Los modelos clásicos trabajan a partir de una cantidad fija de personas susceptibles, por lo que casos como nacimientos o muertes que no sean causados por la enfermedad no se contabilizan.
+
+Esto nos lleva a preguntarnos: ¿cuál es la metodología para elegir un modelo apropiado? Para responderla, debemos analizar las características de nuestro caso de estudio e identificar cuáles son cruciales y cuáles podemos dejar de lado. En el caso de las enfermedades, algunas de las preguntas que podemos plantearnos para establecer el modelo son:
+
+\begin{itemize}
+    \item ¿Es muy contagiosa esta enfermedad?
+    \item ¿La enfermedad tiene una alta mortalidad?
+    \item ¿Quiénes son propensos a contraer la enfermedad?
+    \item ¿Qué tan rápido se desarrolla la enfermedad en una persona?
+    \item Una persona infectada, ¿cuánto tiempo tiene la enfermedad?
+\end{itemize}
+
+A partir de las preguntas adecuadas y del objetivo del estudio, se puede elegir un modelo correcto. Dependiendo de los objetivos, podemos optar entre un modelo determinista o uno estocástico. Los modelos deterministas incluyen información sobre los promedios de lo que sucede en la población. Por otro lado, los modelos estocásticos incorporan la aleatoriedad del proceso y nos brindan información numérica sobre las transiciones entre diferentes compartimentos.
+
+La mayoría de los modelos deterministas son comúnmente llamados modelos compartimentales. Estos dividen la población en subgrupos y, mediante sistemas de ecuaciones diferenciales, se aproxima la cantidad de personas que se encuentran en cada subgrupo. Para ello, el tiempo se discretiza en pasos, generalmente de un día, lo que permite obtener la aproximación del tiempo $t+1$ en términos de lo que se tiene en $t$.
+
+\section{El modelo SIRD}
+
+El modelo SIRD es un modelo compartimental en el que se divide una población total $N$ (constante) en cuatro compartimientos:
+
+\begin{itemize}
+    \item Susceptibles ($S$)
+    \item Infectados ($I$)
+    \item Recuperados ($R$)
+    \item Fallecidos ($D$)
+\end{itemize}
+
+Cabe notar que, a diferencia de modelos como SIR o SEIR, aquí se toman en cuenta las personas fallecidas, ya que la mortalidad registrada durante la pandemia de COVID-19 fue considerable y no es posible despreciarla.
+
+Además, estos compartimientos seguirán las siguientes reglas para el estudio que se presentará más adelante:
+
+\begin{itemize}
+    \item El compartimiento de susceptibles incluye a cualquier persona que pueda ser infectada.
+    \item El compartimiento de infectados incluye a cualquier persona que tenga la enfermedad, esté infectada y pueda transmitirla. Aquí entran los casos comunes de infección, pero también los casos asintomáticos, que en algunas ocasiones pueden incluso no tener registro.
+    \item El compartimiento de recuperados incluye a las personas que sobrevivieron y salieron del compartimiento de infectados. Además, se supone que al recuperarse se adquiere inmunidad hacia la enfermedad, por lo que la probabilidad de que una persona recuperada pase a ser susceptible es nula.
+\end{itemize}
+
+En este modelo, la dinámica de transición entre los compartimientos, dependiente del tiempo, se define de la siguiente manera, con $N = S(t) + I(t) + R(t) + D(t)$:
+
+\begin{align}
+    \frac{dS}{dt} &= -\beta I \frac{S}{N} \\
+    \frac{dI}{dt} &= \beta I \frac{S}{N} - \gamma I - \delta I \\
+    \frac{dR}{dt} &= \gamma I \\
+    \frac{dD}{dt} &= \delta I
+\end{align}
+
+Los parámetros que aparecen en las ecuaciones diferenciales son los encargados de modificar el comportamiento de la propagación de la enfermedad:
+
+\begin{itemize}
+    \item $\beta$ (beta): tasa de contagio. Controla qué tan rápido los susceptibles se infectan y depende del contacto social y de la probabilidad de transmisión.
+    \item $\gamma$ (gamma): tasa de recuperación. $\frac{1}{\gamma}$ es el tiempo promedio de recuperación.
+    \item $\delta$ (delta): tasa de mortalidad. $\frac{1}{\delta}$ es el tiempo promedio hasta el fallecimiento desde la infección.
+\end{itemize}
+
+Estos parámetros se toman como fijos, pero en la realidad no lo son: las distintas medidas o políticas públicas que se apliquen, así como el avance del conocimiento médico, afectan directamente su valor.
+
+Ahora, conociendo lo que representa cada uno de los parámetros $\beta$, $\gamma$ y $\delta$, es fácil entender lo que describen las ecuaciones diferenciales. Sabemos que la derivada representa el cambio respecto a algo, que en este caso es el tiempo. Cada una de las ecuaciones nos dice cómo cambia el número de individuos en ese compartimiento con respecto al tiempo.
+
+En el caso de los susceptibles, la cantidad de personas únicamente puede disminuir, razón por la cual aparece el signo menos. Además, estas personas salen de este compartimiento según la proporción de infectados y susceptibles respecto a la población total.
+
+Por otro lado, las personas que salen del compartimiento de susceptibles son las mismas que entran al compartimiento de infectados, por eso el término se traslada directamente. Además, de este compartimiento hay dos vías de salida: la recuperación o la muerte.
+
+Los dos últimos compartimientos son relaciones directas de lo anterior.
+
