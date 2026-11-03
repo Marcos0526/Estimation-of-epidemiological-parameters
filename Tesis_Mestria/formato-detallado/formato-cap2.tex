@@ -1,0 +1,34 @@
+\chapter{Cadenas de Markov}
+
+Para llegar al procedimiento de Filtros de Ensambles de Kalman, observemos antes la teoría básica y cómo llegamos hasta ese tema. Definamos nuestro espacio de trabajo y desarrollemos paso a paso.
+
+En un tiempo discreto, consideremos un espacio contable $I$. Llamemos a cada $i \in I$ un estado, por lo que $I$ será el espacio de estados. Además, podemos realizar una medición para cada $i \in I$. Entonces, $\lambda = (\lambda_i : i \in I)$ es una medida en $I$ si $0 \leq \lambda_i < \infty$ para todo $i \in I$. Si además la masa total cumple $\sum_{i \in I} \lambda_i = 1$, llamamos a $\lambda$ una distribución. Todo esto lo trabajamos a través de un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
+
+Si $X$ es una variable aleatoria con valores en $I$, entonces es una función $X: \Omega \rightarrow I$. Suponemos que
+\[
+\lambda_i = \mathbb{P}(X = i) = \mathbb{P}(\{\omega \in \Omega : X(\omega) = i\}),
+\]
+lo que nos dice que $\lambda$ define la distribución de $X$. Así, $X$ modela un estado aleatorio que toma el valor $i$ con probabilidad $\lambda_i$.
+
+Ahora, si definimos una matriz $P = (p_{ij} : i, j \in I)$, decimos que es estocástica si cada fila es una distribución. Algunas veces, una representación gráfica de esta matriz ayuda a entender mejor lo que estamos definiendo. Un ejemplo puede verse en la siguiente figura:
+
+% figura
+
+Con lo definido anteriormente, enunciamos la definición de cadena de Markov.
+
+\textbf{Definición.} Decimos que $(X_n)_{n \geq 0}$ es una cadena de Markov con distribución inicial $\lambda$ y matriz de transición $P$ si:
+\begin{enumerate}
+    \item[(i)] $X_0$ tiene distribución $\lambda$;
+    \item[(ii)] para $n \geq 0$, condicionalmente a que $X_n = i$, $X_{n+1}$ tiene distribución $(p_{ij} : j \in I)$ y es independiente de $X_0, \ldots, X_{n-1}$ \cite{Norris}.
+\end{enumerate}
+
+La primera característica define el estado inicial y especifica las probabilidades de que el sistema comience en cada uno de los estados posibles en el tiempo cero.
+
+La segunda característica combina dos propiedades fundamentales: la pérdida de memoria y la homogeneidad temporal.
+
+La pérdida de memoria es una propiedad base de las cadenas de Markov. Indica que la distribución del estado futuro depende únicamente del estado actual y es independiente de toda la historia pasada. De forma matemática,
+\[
+\mathbb{P}(X_{n+1} = j \mid X_n = i, X_{n-1} = i_{n-1}, \ldots, X_0 = i_0) = \mathbb{P}(X_{n+1} = j \mid X_n = i) = p_{ij}.
+\]
+
+La homogeneidad temporal se refiere al elemento $p_{ij}$, que indica la probabilidad de transitar del estado $i$ al estado $j$. Esta probabilidad depende únicamente de la pareja de estados $(i, j)$ y no del instante $n$ en el que nos encontremos.

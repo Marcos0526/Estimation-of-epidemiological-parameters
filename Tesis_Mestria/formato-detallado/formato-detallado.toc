@@ -2,5 +2,6 @@
 \contentsline {chapter}{\numberline {1}Epidemias}{1}{}%
 \contentsline {section}{\numberline {1.1}¿Cómo se comporta una epidemia?}{2}{}%
 \contentsline {section}{\numberline {1.2}El modelo SIRD}{2}{}%
-\contentsline {chapter}{\numberline {A}SPS Apéndice}{5}{}%
-\contentsline {chapter}{Bibliografía}{7}{}%
+\contentsline {chapter}{\numberline {2}Cadenas de Markov}{5}{}%
+\contentsline {chapter}{\numberline {A}SPS Apéndice}{7}{}%
+\contentsline {chapter}{Bibliografía}{9}{}%

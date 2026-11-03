@@ -2,47 +2,48 @@ This is BibTeX, Version 0.99e (TeX Live 2026)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: formato-detallado.aux
 A level-1 auxiliary file: formato-cap1.aux
+A level-1 auxiliary file: formato-cap2.aux
 A level-1 auxiliary file: formato-a1.aux
 The style file: plain.bst
 Database file #1: tesis.bib
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            523 strings with 4589 characters,
-and the built_in function-call counts, 1018 in all, are:
-= -- 94
-> -- 40
-< -- 0
-+ -- 17
-- -- 12
-* -- 53
-:= -- 182
-add.period$ -- 14
-call.type$ -- 4
-change.case$ -- 16
+            532 strings with 4743 characters,
+and the built_in function-call counts, 1255 in all, are:
+= -- 115
+> -- 47
+< -- 1
++ -- 20
+- -- 14
+* -- 69
+:= -- 222
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 42
-empty$ -- 92
-format.name$ -- 12
-if$ -- 212
+cite$ -- 5
+duplicate$ -- 55
+empty$ -- 115
+format.name$ -- 14
+if$ -- 262
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 5
-newline$ -- 25
-num.names$ -- 8
-pop$ -- 26
+int.to.str$ -- 5
+missing$ -- 7
+newline$ -- 30
+num.names$ -- 10
+pop$ -- 32
 preamble$ -- 1
-purify$ -- 14
+purify$ -- 17
 quote$ -- 0
-skip$ -- 28
+skip$ -- 34
 stack$ -- 0
-substring$ -- 36
-swap$ -- 4
-text.length$ -- 0
+substring$ -- 41
+swap$ -- 7
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
+type$ -- 14
 warning$ -- 0
-while$ -- 9
-width$ -- 5
-write$ -- 47
+while$ -- 11
+width$ -- 6
+write$ -- 59
