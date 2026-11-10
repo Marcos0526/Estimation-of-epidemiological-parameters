@@ -1,0 +1,195 @@
+\chapter{Datos}
+
+La información con la que se trabajó en esta investigación es muy variada: desde artículos y publicaciones que se enfocaron en puntos clave, los cuales ayudaron a tomar decisiones sobre cómo proseguir con la investigación, hasta la columna vertebral del análisis, que son los registros públicos de cada persona reportada en México.
+
+En México, la Dirección General de Epidemiología (DGE), órgano normativo de la Secretaría de Salud del Gobierno de México, tiene como función principal dirigir la vigilancia epidemiológica, el análisis de datos de salud pública y la investigación nacional. Esta tarea se lleva a cabo mediante el Sistema Nacional de Vigilancia Epidemiológica (SINAVE), el cual es un conjunto de estrategias, acciones y plataformas que estandariza la recopilación de información proveniente de distintas instituciones de salud, tales como el IMSS, el ISSSTE, Pemex y los hospitales privados, permitiendo que la información fluya desde las comunidades más aisladas hasta las oficinas generales de la DGE.
+
+Asimismo, se considera lo establecido en el decreto en materia de datos abiertos:
+
+\begin{quote}
+``Que el Decreto que establece la regulación en materia de Datos Abiertos publicado en el Diario Oficial de la Federación el 20 de febrero de 2015, tiene el objeto de regular la forma mediante la cual los datos de carácter público, generados por las dependencias y entidades de la Administración Pública Federal, y las empresas productivas del Estado, se pondrán a disposición de la población como datos abiertos, con el propósito de facilitar su acceso, uso, reutilización y redistribución para cualquier fin, conforme a los ordenamientos jurídicos aplicables'' \cite{dof2015}.
+\end{quote}
+
+Contamos con los registros de COVID-19 de los años 2020, 2021, 2022 y 2023. Estos serán los únicos años considerados en el análisis, ya que delimitan el periodo comprendido entre:
+
+\begin{itemize}
+    \item La confirmación de los primeros casos en México, el 27 de febrero de 2020.
+    \item La publicación del decreto por el que el Gobierno de México da por terminada la emergencia sanitaria por COVID-19, el 9 de mayo de 2023.
+\end{itemize}
+
+Dentro de este rango de fechas se destacan seis olas de importancia:
+
+\begin{itemize}
+    \item Primera ola: semanas epidemiológicas 8 a 39 de 2020 (marzo a septiembre de 2020).
+    \item Segunda ola: semanas epidemiológicas 40 de 2020 a 15 de 2021 (octubre de 2020 a abril de 2021), con pico de mortalidad en enero de 2021.
+    \item Tercera ola: semanas epidemiológicas 23 a 42 de 2021 (junio a octubre de 2021), impulsada por la variante Delta.
+    \item Cuarta ola: semanas epidemiológicas 51 de 2021 a 9 de 2022 (diciembre de 2021 a marzo de 2022), impulsada por la variante Ómicron y con pico máximo de contagios en enero de 2022.
+    \item Quinta ola: semanas epidemiológicas 22 a 33 de 2022 (mayo a agosto de 2022).
+    \item Sexta ola: semanas epidemiológicas 49 de 2022 a 4 de 2023 (diciembre de 2022 a enero de 2023) \cite{gacetaunam2025}.
+\end{itemize}
+
+\section{Archivos CSV}
+
+Los datos utilizados provienen de archivos en formato CSV proporcionados por la institución. Para su correcta interpretación, se distinguen dos componentes: la base de datos, que contiene los registros de cada persona reportada, y los catálogos normativos, que definen el significado de los códigos numéricos que aparecen en dicha base. Ambos componentes se describen a continuación.
+
+\subsection{Estructura de la base de datos}
+
+Los metadatos que proporciona la institución (archivo \texttt{Descriptores}) indican que la base de datos consta de 41 variables activas, las cuales se agrupan en las siguientes categorías de información:
+
+\begin{itemize}
+    \item \textbf{Identificación y temporalidad:} \texttt{FECHA\_ACTUALIZACION}, \texttt{ID\_REGISTRO}, \texttt{FECHA\_INGRESO}, \texttt{FECHA\_SINTOMAS} y \texttt{FECHA\_DEF}.
+    \item \textbf{Demografía y ubicación:} \texttt{SEXO}, \texttt{EDAD}, \texttt{NACIONALIDAD}, \texttt{ENTIDAD\_UM}, \texttt{ENTIDAD\_NAC}, \texttt{ENTIDAD\_RES}, \texttt{MUNICIPIO\_RES}, \texttt{PAIS\_NACIONALIDAD}, \texttt{PAIS\_ORIGEN} y la variable \texttt{MIGRANTE}.
+    \item \textbf{Inclusión social:} evaluación de pertenencia mediante \texttt{INDIGENA} y \texttt{HABLA\_LENGUA\_INDIG}.
+    \item \textbf{Comorbilidades y condiciones previas:} indicadores dicotómicos (\texttt{SI\_NO}) sobre \texttt{EMBARAZO}, \texttt{NEUMONIA}, \texttt{DIABETES}, \texttt{EPOC}, \texttt{ASMA}, \texttt{INMUSUPR}, \texttt{HIPERTENSION}, \texttt{CARDIOVASCULAR}, \texttt{OBESIDAD}, \texttt{RENAL\_CRONICA}, \texttt{TABAQUISMO} y \texttt{OTRA\_COM}.
+    \item \textbf{Manejo clínico y severidad:} \texttt{ORIGEN} (USMER / No USMER), \texttt{SECTOR} (institución de atención), \texttt{TIPO\_PACIENTE} (ambulatorio / hospitalizado), \texttt{INTUBADO} e ingreso a \texttt{UCI}.
+    \item \textbf{Laboratorio y diagnóstico:} \texttt{TOMA\_MUESTRA\_LAB}, \texttt{RESULTADO\_PCR}, \texttt{RESULTADO\_PCR\_COINFECCION}, \texttt{TOMA\_MUESTRA\_ANTIGENO} y \texttt{RESULTADO\_ANTIGENO}.
+    \item \textbf{Clasificación epidemiológica final:} \texttt{CLASIFICACION\_FINAL\_COVID} y \texttt{CLASIFICACION\_FINAL\_FLU}.
+\end{itemize}
+
+Cada registro corresponde a una persona reportada, y gran parte de sus variables toma valores codificados de forma numérica. Por ello, la interpretación de dichos valores requiere los catálogos que se describen en la siguiente subsección.
+
+\subsection{Catálogos normativos}
+
+El archivo de catálogos cuenta con 13 pestañas de estandarización. Para facilitar su lectura, los catálogos se presentan agrupados por tema.
+
+\subsubsection{Diagnósticos por laboratorio y clasificación final}
+
+\begin{itemize}
+    \item \textbf{Catálogo \texttt{RESULTADO\_PCR} (35 claves):} codifica la detección por PCR de patógenos específicos: influenza (\texttt{AH1N1 PMD}, \texttt{A H1}, \texttt{A H3}, \texttt{B}, \texttt{H5}), \texttt{SARS-CoV-2}, coronavirus humanos (\texttt{229E}, \texttt{OC43}, \texttt{NL63}, \texttt{HKU1}, \texttt{MERS-CoV}), virus sincicial respiratorio (\texttt{VSR A/B}), parainfluenza, adenovirus, metapneumovirus, bocavirus y enterovirus/rinovirus, además de estatus de control analítico.
+    \item \textbf{Catálogo \texttt{RESULTADO\_ANTIGENO}:} define los resultados de pruebas rápidas (\texttt{1: Positivo a SARS-CoV-2}, \texttt{2: Negativo}, \texttt{97: No aplica}).
+    \item \textbf{Catálogo \texttt{CLASIFICACION\_FINAL\_COVID}:} establece el dictamen epidemiológico en 7 niveles (asociación clínica, dictaminación, laboratorio positivo, inválido, no realizado, sospechoso y negativo).
+    \item \textbf{Catálogo \texttt{CLASIFICACION\_FINAL\_FLU}:} determina el dictamen epidemiológico para influenza en 5 niveles.
+\end{itemize}
+
+\subsubsection{Sector sanitario y geografía}
+
+\begin{itemize}
+    \item \textbf{Catálogo \texttt{SECTOR}:} especifica la institución (Cruz Roja, DIF, Estatal, IMSS, IMSS-Bienestar, ISSSTE, Municipal, PEMEX, Privada, SEDENA, SEMAR, SSA, Universitario, CIJ, IMSS Bienestar OPD y No especificado).
+    \item \textbf{Catálogos geográficos (\texttt{ENTIDADES} y \texttt{MUNICIPIOS}):} mapean numéricamente las 32 entidades federativas de la República Mexicana y sus respectivos municipios.
+    \item \textbf{Catálogos generales:} codificación estandarizada para \texttt{ORIGEN}, \texttt{SEXO}, \texttt{TIPO\_PACIENTE}, \texttt{NACIONALIDAD} y respuestas binarias o de control (\texttt{SI\_NO}).
+\end{itemize}
+
+\subsubsection{Variables categóricas generales y sociodemográficas}
+
+A continuación se detallan los valores admisibles para cada variable categórica del catálogo normativo.
+
+\begin{itemize}
+    \item \textbf{ORIGEN} (tipo de vigilancia):
+        \begin{itemize}
+            \item \texttt{1}: USMER (Unidades de Salud Monitoras de Enfermedades Respiratorias)
+            \item \texttt{2}: FUERA DE USMER
+            \item \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{SECTOR} (institución de atención):
+        \begin{itemize}
+            \item \texttt{1}: CRUZ ROJA | \texttt{2}: DIF | \texttt{3}: ESTATAL | \texttt{4}: IMSS | \texttt{5}: IMSS-BIENESTAR | \texttt{6}: ISSSTE | \texttt{7}: MUNICIPAL | \texttt{8}: PEMEX | \texttt{9}: PRIVADA | \texttt{10}: SEDENA | \texttt{11}: SEMAR | \texttt{12}: SSA | \texttt{13}: UNIVERSITARIO | \texttt{14}: CIJ | \texttt{15}: IMSS Bienestar OPD | \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{SEXO}:
+        \begin{itemize}
+            \item \texttt{1}: MUJER | \texttt{2}: HOMBRE | \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{TIPO\_PACIENTE}:
+        \begin{itemize}
+            \item \texttt{1}: AMBULATORIO | \texttt{2}: HOSPITALIZADO | \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{NACIONALIDAD}:
+        \begin{itemize}
+            \item \texttt{1}: MEXICANA | \texttt{2}: EXTRANJERA | \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{SI\_NO} (aplicable a comorbilidades, síntomas, intubación, UCI y variables binarias):
+        \begin{itemize}
+            \item \texttt{1}: SÍ | \texttt{2}: NO | \texttt{97}: NO APLICA | \texttt{98}: SE IGNORA | \texttt{99}: NO ESPECIFICADO
+        \end{itemize}
+
+    \item \textbf{ENTIDAD\_UM / ENTIDAD\_NAC / ENTIDAD\_RES}:
+        \begin{itemize}
+            \item Claves numéricas del \texttt{1} al \texttt{32} (correspondientes a las 32 entidades federativas), \texttt{36} (Estados Unidos Mexicanos), \texttt{97} (No aplica), \texttt{98} (Se ignora) y \texttt{99} (No especificado).
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Pruebas diagnósticas y resultados de laboratorio}
+
+\begin{itemize}
+    \item \textbf{RESULTADO\_PCR} y \textbf{RESULTADO\_PCR\_COINFECCION}:
+        \begin{itemize}
+            \item \textbf{Influenza}: \texttt{1} (AH1N1 PMD), \texttt{2} (A H1), \texttt{3} (A H3), \texttt{4} (B), \texttt{13} (A NO SUBTIPIFICADA), \texttt{14} (A H5).
+            \item \textbf{Coronavirus}: \texttt{22} (CORONA 229E), \texttt{23} (CORONA OC43), \texttt{24} (CORONA SARS), \texttt{25} (CORONA NL63), \texttt{26} (CORONA HKU1), \texttt{34} (SARS-CoV-2), \texttt{35} (MERS-CoV), \texttt{36} (SARS-CoV).
+            \item \textbf{Otros virus respiratorios}: \texttt{7} (ADENOVIRUS), \texttt{8} (PARAINFLUENZA 1), \texttt{9} (PARAINFLUENZA 2), \texttt{10} (PARAINFLUENZA 3), \texttt{32} (PARAINFLUENZA 4), \texttt{11} (VSR), \texttt{20} (VSR A), \texttt{21} (VSR B), \texttt{28} (ENTEROV//RHINOVIRUS), \texttt{29} (METAPNEUMOVIRUS), \texttt{37} (BOCAVIRUS).
+            \item \textbf{Resultados técnicos y de control}: \texttt{5} (NEGATIVO), \texttt{6} (MUESTRA NO ADECUADA), \texttt{17} (MUESTRA RECHAZADA), \texttt{27} (MUESTRA QUE NO AMPLIFICÓ), \texttt{30} (MUESTRA SIN AISLAMIENTO), \texttt{33} (MUESTRA SIN CÉLULAS), \texttt{41} (MUESTRA NO RECIBIDA), \texttt{997} (NO APLICA, CASO SIN MUESTRA), \texttt{998} (SIN COINFECCIÓN), \texttt{999} (PENDIENTE).
+        \end{itemize}
+
+    \item \textbf{RESULTADO\_ANTIGENO}:
+        \begin{itemize}
+            \item \texttt{1}: POSITIVO A SARS-COV-2 | \texttt{2}: NEGATIVO A SARS-COV-2 | \texttt{97}: NO APLICA (CASO SIN MUESTRA)
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Clasificaciones epidemiológicas finales}
+
+\begin{itemize}
+    \item \textbf{CLASIFICACION\_FINAL\_COVID}:
+        \begin{itemize}
+            \item \texttt{1}: CASO DE COVID-19 CONFIRMADO POR ASOCIACIÓN CLÍNICA EPIDEMIOLÓGICA
+            \item \texttt{2}: CASO DE COVID-19 CONFIRMADO POR COMITÉ DE DICTAMINACIÓN
+            \item \texttt{3}: CASO DE SARS-COV-2 CONFIRMADO (POR PCR O ANTÍGENO)
+            \item \texttt{4}: INVÁLIDO POR LABORATORIO
+            \item \texttt{5}: NO REALIZADO POR LABORATORIO
+            \item \texttt{6}: CASO SOSPECHOSO
+            \item \texttt{7}: NEGATIVO A SARS-COV-2
+        \end{itemize}
+
+    \item \textbf{CLASIFICACION\_FINAL\_FLU}:
+        \begin{itemize}
+            \item \texttt{3}: CASO DE INFLUENZA CONFIRMADO
+            \item \texttt{4}: INVÁLIDO POR LABORATORIO
+            \item \texttt{5}: NO REALIZADO POR LABORATORIO
+            \item \texttt{6}: CASO SOSPECHOSO
+            \item \texttt{7}: NEGATIVO A INFLUENZA
+        \end{itemize}
+\end{itemize}
+
+\section{Cambios metodológicos y exploración de los datos}
+
+En las revisiones del sistema se registran dos evoluciones estructurales:
+\begin{enumerate}
+    \item Sustitución de \texttt{RESULTADO\_LAB}: se reemplazó la variable general anterior por la medición detallada a través de \texttt{RESULTADO\_PCR} y \texttt{RESULTADO\_PCR\_COINFECCION}, lo que permite documentar la presencia de coinfecciones virales complejas.
+    \item Bifurcación de la clasificación final: la variable histórica de clasificación general se separó en \texttt{CLASIFICACION\_FINAL\_COVID} y \texttt{CLASIFICACION\_FINAL\_FLU}, para asegurar un seguimiento diferenciado e integral.
+\end{enumerate}
+
+Dado que se cuenta con un archivo CSV por año, lo primero que se realizó fue concatenar las bases de datos, verificando que tuvieran la misma dimensión y que no existieran problemas al relacionar los datos de los diferentes años. El resultado de esta concatenación es un único archivo CSV que contiene los registros de 2020 a 2023. El total de registros es de 20,372,904.
+
+Para manejar de forma más eficiente esta base de datos, y dado que la investigación se plantea bajo el modelo de un solo parche, se eliminaron del CSV conjunto las siguientes variables:
+
+\begin{verbatim}
+var_no_necesarias=['ORIGEN','SECTOR','ENTIDAD_UM','ENTIDAD_NAC','ENTIDAD_RES','MUNICIPIO_RES','EMBARAZO','HABLA_LENGUA_INDIG','INDIGENA','MIGRANTE','PAIS_NACIONALIDAD','PAIS_ORIGEN']
+\end{verbatim}
+
+El resultado es un archivo CSV de aproximadamente 2 GB con más de veinte millones de registros. En el análisis exploratorio se encontró que no existen valores nulos ni registros duplicados.
+
+La distribución de la clasificación final presenta los siguientes valores:
+
+\begin{center}
+\begin{tabular}{clr}
+\hline
+Clave & Clasificación final & Registros \\
+\hline
+7 & Negativo a SARS-CoV-2 & 11,791,076 \\
+3 & Caso de SARS-CoV-2 confirmado & 7,319,704 \\
+6 & Caso sospechoso & 757,457 \\
+1 & Caso confirmado por asociación clínica epidemiológica & 377,706 \\
+5 & No realizado por laboratorio & 98,902 \\
+2 & Caso confirmado por comité de dictaminación & 15,995 \\
+4 & Inválido por laboratorio & 12,064 \\
+\hline
+\end{tabular}
+\end{center}
+
+En este periodo se registraron 7,713,405 casos positivos (claves 1, 2 y 3) y 335,098 defunciones.
+
+A partir de este punto, no es viable trabajar siempre con todo el CSV, por lo que se creó una función que, dadas una fecha inicial y una fecha final, genera un nuevo archivo que excluye los registros fuera de dicho rango. El filtrado se realiza con la variable \texttt{FECHA\_INGRESO}.
+

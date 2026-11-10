@@ -3,5 +3,15 @@
 \contentsline {section}{\numberline {1.1}¿Cómo se comporta una epidemia?}{2}{}%
 \contentsline {section}{\numberline {1.2}El modelo SIRD}{2}{}%
 \contentsline {chapter}{\numberline {2}Cadenas de Markov}{5}{}%
-\contentsline {chapter}{\numberline {A}SPS Apéndice}{7}{}%
-\contentsline {chapter}{Bibliografía}{9}{}%
+\contentsline {chapter}{\numberline {3}Datos}{7}{}%
+\contentsline {section}{\numberline {3.1}Archivos CSV}{8}{}%
+\contentsline {subsection}{\numberline {3.1.1}Estructura de la base de datos}{8}{}%
+\contentsline {subsection}{\numberline {3.1.2}Catálogos normativos}{8}{}%
+\contentsline {subsubsection}{Diagnósticos por laboratorio y clasificación final}{9}{}%
+\contentsline {subsubsection}{Sector sanitario y geografía}{9}{}%
+\contentsline {subsubsection}{Variables categóricas generales y sociodemográficas}{9}{}%
+\contentsline {subsubsection}{Pruebas diagnósticas y resultados de laboratorio}{10}{}%
+\contentsline {subsubsection}{Clasificaciones epidemiológicas finales}{10}{}%
+\contentsline {section}{\numberline {3.2}Cambios metodológicos y exploración de los datos}{11}{}%
+\contentsline {chapter}{\numberline {A}SPS Apéndice}{13}{}%
+\contentsline {chapter}{Bibliografía}{15}{}%
