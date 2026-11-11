@@ -4,12 +4,13 @@ The top-level auxiliary file: formato-detallado.aux
 A level-1 auxiliary file: formato-cap1.aux
 A level-1 auxiliary file: formato-cap2.aux
 A level-1 auxiliary file: formato-cap3.aux
-A level-1 auxiliary file: formato-a1.aux
+A level-1 auxiliary file: formato-cap4.aux
+A level-1 auxiliary file: formato-cap5.aux
 The style file: plain.bst
 Database file #1: tesis.bib
 You've used 7 entries,
             2118 wiz_defined-function locations,
-            543 strings with 5003 characters,
+            544 strings with 5021 characters,
 and the built_in function-call counts, 1675 in all, are:
 = -- 155
 > -- 61

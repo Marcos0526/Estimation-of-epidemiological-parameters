@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  9 NOV 2026 22:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  11 NOV 2026 11:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -209,7 +209,7 @@ LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 8.
- (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-a1.aux))
+ (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux) (./formato-cap5.aux))
 \openout1 = `formato-detallado.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -296,47 +296,62 @@ LaTeX Info: Redefining \% on input line 1.
 
  (./formato-cap1.tex
 Cap\'{\i }tulo 1.
-[1
+) [1
 
 
 ]
+\openout2 = `formato-cap2.aux'.
+
+ (./formato-cap2.tex [2
+
+
+
+
+]
+Cap\'{\i }tulo 2.
+[3]
 LaTeX Info: Redefining \. on input line 66.
 LaTeX Info: Redefining \% on input line 66.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 66.
 LaTeX Info: Redefining \. on input line 66.
 LaTeX Info: Redefining \% on input line 66.
- [2]
-LaTeX Info: Redefining \. on input line 106.
-LaTeX Info: Redefining \% on input line 106.
-LaTeX Info: Redefining \. on input line 106.
-LaTeX Info: Redefining \% on input line 106.
- [3])
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
  [4]
-\openout2 = `formato-cap2.aux'.
-
- (./formato-cap2.tex
-Cap\'{\i }tulo 2.
-) [5
-
-
-
-
-]
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+ [5])
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
+ [6]
 \openout2 = `formato-cap3.aux'.
 
- (./formato-cap3.tex [6
+ (./formato-cap3.tex
+Cap\'{\i }tulo 3.
+[7
+
+
+
+
+])
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+ [8]
+\openout2 = `formato-cap4.aux'.
+
+ (./formato-cap4.tex
+Cap\'{\i }tulo 4.
+[9
 
 
 
 
 ]
-Cap\'{\i }tulo 3.
-[7]
 Underfull \hbox (badness 2221) in paragraph at lines 41--42
 []\T1/cmr/bx/n/10 Demografía y ubi-ca-ción: \T1/cmtt/m/n/10 SEXO\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 EDAD\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 NACIONALIDAD\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 ENTIDAD_UM\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 ENTIDAD_NAC\T1/cmr/m/n/10 ,
  []
@@ -357,68 +372,64 @@ LaTeX Info: Redefining \. on input line 60.
 LaTeX Info: Redefining \% on input line 60.
 LaTeX Info: Redefining \. on input line 60.
 LaTeX Info: Redefining \% on input line 60.
-[8]
+[10]
 LaTeX Info: Redefining \. on input line 107.
 LaTeX Info: Redefining \% on input line 107.
 LaTeX Info: Redefining \. on input line 107.
 LaTeX Info: Redefining \% on input line 107.
- [9{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+ [11{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 LaTeX Info: Redefining \. on input line 160.
 LaTeX Info: Redefining \% on input line 160.
 LaTeX Info: Redefining \. on input line 160.
 LaTeX Info: Redefining \% on input line 160.
- [10]
+ [12]
 Overfull \hbox (528.47539pt too wide) in paragraph at lines 170--170
 []\T1/cmtt/m/n/10 var_no_necesarias=['ORIGEN','SECTOR','ENTIDAD_UM','ENTIDAD_NAC','ENTIDAD_RES','MUNICIPIO_RES','EMBARAZO','HABLA_LENGUA_INDIG','INDIGENA','MIGRANTE','PAIS_NACIONALIDAD','PAIS_ORIGEN'][] 
  []
 
 )
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
- [11]
-\openout2 = `formato-a1.aux'.
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+ [13]
+\openout2 = `formato-cap5.aux'.
 
- (./formato-a1.tex [12
+ (./formato-cap5.tex [14
 
 
 
 
 ]
-Ap\'{e}ndice A.
-File: escudo-2.png Graphic file (type png)
-<use escudo-2.png>
-Package pdftex.def Info: escudo-2.png  used on input line 7.
-(pdftex.def)             Requested size: 85.35696pt x 85.35982pt.
-) [13] [14
+Cap\'{\i }tulo 5.
+) [15] [16
 
 
 
-] (./formato-detallado.bbl) [15
+] (./formato-detallado.bbl) [17
 
 ] (./formato-detallado.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
- (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-a1.aux))
+ (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux) (./formato-cap5.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5053 strings out of 467525
- 78997 string characters out of 5418982
- 498995 words of memory out of 5000000
- 33874 multiletter control sequences out of 15000+600000
+ 5076 strings out of 467525
+ 79663 string characters out of 5418982
+ 499265 words of memory out of 5000000
+ 33890 multiletter control sequences out of 15000+600000
  643138 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,11n,79p,879b,664s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,11n,79p,881b,664s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on formato-detallado.pdf (23 pages, 409851 bytes).
+Output written on formato-detallado.pdf (25 pages, 414512 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
+ 214 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
