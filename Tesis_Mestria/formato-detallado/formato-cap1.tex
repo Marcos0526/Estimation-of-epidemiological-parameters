@@ -8,11 +8,23 @@ La pandemia de COVID-19 es un claro ejemplo de ello. Si se tuviera una idea fiab
 
 Esta es una tarea difícil, ya que en el modelo SIRD (susceptibles, infectados, recuperados y fallecidos) normalmente se toman los parámetros de la epidemia como constantes, aun cuando estos pueden cambiar con el tiempo debido a factores como las medidas sanitarias, el comportamiento de la población o la aparición de nuevas variantes.
 
-\section{Objetivos}
+\section{Objetivos generales}
 
 Estimar los parámetros $\beta$, $\gamma$ y $\delta$, (tasa de contagio, tasa de recuperación y tasa de mortalidad, respectivamente) dependientes del tiempo, del modelo SIRD mediante el método de ensamble de los filtros de Kalman, a partir de datos sobre COVID-19 en México.
+
+\section{Objetivos específicos}
+Para alcanzar este objetivo, primero caracterizaremos los registros disponibles y estableceremos la relación entre las series observadas y los compartimientos o flujos del modelo. Después formularemos el SIRD en espacio de estados, incorporando las tasas como cantidades que pueden cambiar entre fechas de observación. Aplicaremos el filtro de Kalman por conjuntos para actualizar conjuntamente los compartimientos y las tasas conforme se incorporen los datos. Finalmente, compararemos las cantidades observables que predice el modelo con los registros y examinaremos la dispersión del ensamble y las limitaciones que presenta la estimación de cada tasa.
+
 
 \section{Justificación}
 
 Los filtros de Kalman de ensamble (EnKF, por sus siglas en inglés) son una técnica de asimilación de datos diseñada para estimar estados y parámetros en sistemas dinámicos, especialmente cuando estos son no lineales y están sujetos a incertidumbre. A diferencia del filtro de Kalman clásico, el EnKF utiliza un conjunto de simulaciones (ensamble) para representar la distribución de probabilidad del sistema, lo que permite capturar de manera más flexible la variabilidad y el ruido en los datos. Este enfoque combina las predicciones del modelo con observaciones reales mediante actualizaciones secuenciales, ajustando continuamente las estimaciones conforme se dispone de nueva información.
 
+El aporte de este trabajo consiste en formular una estimación conjunta de los estados y las tasas variables del SIRD para el caso mexicano, haciendo explícita la relación entre los registros disponibles y las cantidades predichas por el modelo. Esto permite examinar los cambios estimados a lo largo del periodo y reconocer qué resultados dependen de los supuestos sobre el estado inicial, la evolución de las tasas y los errores de observación. En particular, un buen ajuste a los registros puede ser compatible con distintas combinaciones de tasas, de modo que la capacidad de reproducir las series observadas y la identificabilidad de cada parámetro son aspectos distintos del análisis.
+
+
+\section{Alcances y delimitaciones}
+
+El análisis se limita a México y aun mas, se considera una poblacion homogénea, se utiliza los registros públicos de COVID-19 del periodo comprendido entre febrero de 2020 y mayo de 2023, descrito en el capítulo de datos. Trabajaremos a escala nacional con los cuatro compartimientos del SIRD y con tasas efectivas para el conjunto de la población. Por ello, las diferencias entre regiones o grupos de edad y los efectos específicos de las variantes quedan fuera de la modelación explícita.
+
+La interpretación de las estimaciones estará condicionada por la cobertura de los registros, por las diferencias entre las fechas de infección, ingreso y defunción, y por los supuestos adoptados para relacionar las observaciones con el modelo. El alcance del trabajo es retrospectivo. Las trayectorias estimadas se utilizarán para describir la dinámica compatible con los datos y con el modelo durante el periodo analizado. La evaluación causal de medidas sanitarias y el pronóstico fuera de ese periodo quedan fuera del estudio.
