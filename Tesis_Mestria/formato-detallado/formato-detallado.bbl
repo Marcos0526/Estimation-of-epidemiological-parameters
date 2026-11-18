@@ -1,14 +1,49 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{anderson2001}
+Jeffrey~L. Anderson.
+\newblock An ensemble adjustment {Kalman} filter for data assimilation.
+\newblock {\em Monthly Weather Review}, 129(12):2884--2903, 2001.
+
+\bibitem{burgers1998}
+Gerrit Burgers, Peter~Jan van Leeuwen, and Geir Evensen.
+\newblock Analysis scheme in the ensemble {Kalman} filter.
+\newblock {\em Monthly Weather Review}, 126(6):1719--1724, 1998.
+
+\bibitem{cori2013}
+Anne Cori, Neil~M. Ferguson, Christophe Fraser, and Simon Cauchemez.
+\newblock A new framework and software to estimate time-varying reproduction numbers during epidemics.
+\newblock {\em American Journal of Epidemiology}, 178(9):1505--1512, 2013.
 
 \bibitem{dof2015}
 {Diario Oficial de la Federación}.
 \newblock Decreto por el que se establece la regulación en materia de datos abiertos.
 \newblock Diario Oficial de la Federación, February 2015.
 
+\bibitem{durrett2019}
+Rick Durrett.
+\newblock {\em Probability: Theory and Examples}.
+\newblock Cambridge University Press, 5th edition, 2019.
+
+\bibitem{evensen1994}
+Geir Evensen.
+\newblock Sequential data assimilation with a nonlinear quasi-geostrophic model using {Monte Carlo} methods to forecast error statistics.
+\newblock {\em Journal of Geophysical Research: Oceans}, 99(C5):10143--10162, 1994.
+
+\bibitem{evensen2009}
+Geir Evensen.
+\newblock {\em Data Assimilation: The Ensemble {Kalman} Filter}.
+\newblock Springer, 2nd edition, 2009.
+
 \bibitem{german2021}
 G.~T.~H. Germán.
 \newblock Pandemias en la historia: la {peste negra} y la {gripe española}, {COVID-19} y crisis capitalista.
 \newblock DSpace UNACH, August 2021.
+
+\bibitem{kalman1960}
+R.~E. Kalman.
+\newblock A new approach to linear filtering and prediction problems.
+\newblock {\em Journal of Basic Engineering}, 82(1):35--45, 1960.
 
 \bibitem{murray1989}
 J.~D. Murray.
@@ -26,6 +61,21 @@ Otto Pel{\'a}ez~S{\'a}nchez and Pedro M{\'a}s~Bermejo.
 \newblock Brotes, epidemias, eventos y otros t{\'e}rminos epidemiol{\'o}gicos de uso cotidiano.
 \newblock {\em Revista Cubana de Salud P{\'u}blica}, 46(2):e2358, 2020.
 \newblock ISSN 1561-3127.
+
+\bibitem{rauch1965}
+H.~E. Rauch, F.~Tung, and C.~T. Striebel.
+\newblock Maximum likelihood estimates of linear dynamic systems.
+\newblock {\em AIAA Journal}, 3(8):1445--1450, 1965.
+
+\bibitem{roosa2019}
+Kimberlyn Roosa and Gerardo Chowell.
+\newblock Assessing parameter identifiability in compartmental dynamic models using a computational approach: application to infectious disease transmission models.
+\newblock {\em Theoretical Biology and Medical Modelling}, 16:1, 2019.
+
+\bibitem{sarkka2023}
+Simo S{\"a}rkk{\"a} and Lennart Svensson.
+\newblock {\em Bayesian Filtering and Smoothing}.
+\newblock Cambridge University Press, 2nd edition, 2023.
 
 \bibitem{gacetaunam2025}
 Ilse Valencia.

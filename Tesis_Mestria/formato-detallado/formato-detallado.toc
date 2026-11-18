@@ -5,20 +5,22 @@
 \contentsline {chapter}{\numberline {2}Epidemias}{3}{}%
 \contentsline {section}{\numberline {2.1}¿Cómo se comporta una epidemia?}{4}{}%
 \contentsline {section}{\numberline {2.2}El modelo SIRD}{4}{}%
-\contentsline {chapter}{\numberline {3}Procesos estocásticos y propiedad de Markov (Marco Teorico)}{7}{}%
-\contentsline {section}{\numberline {3.1}cadenas de Markov}{7}{}%
-\contentsline {section}{\numberline {3.2}Suavizadores Bayesianos}{8}{}%
-\contentsline {section}{\numberline {3.3}Filtros de kalman}{8}{}%
-\contentsline {section}{\numberline {3.4}Filtros de kalman por conjuntos}{8}{}%
-\contentsline {chapter}{\numberline {4}Datos}{9}{}%
-\contentsline {section}{\numberline {4.1}Archivos CSV}{10}{}%
-\contentsline {subsection}{\numberline {4.1.1}Estructura de la base de datos}{10}{}%
-\contentsline {subsection}{\numberline {4.1.2}Catálogos normativos}{10}{}%
-\contentsline {subsubsection}{Diagnósticos por laboratorio y clasificación final}{11}{}%
-\contentsline {subsubsection}{Sector sanitario y geografía}{11}{}%
-\contentsline {subsubsection}{Variables categóricas generales y sociodemográficas}{11}{}%
-\contentsline {subsubsection}{Pruebas diagnósticas y resultados de laboratorio}{12}{}%
-\contentsline {subsubsection}{Clasificaciones epidemiológicas finales}{12}{}%
-\contentsline {section}{\numberline {4.2}Cambios metodológicos y exploración de los datos}{13}{}%
-\contentsline {chapter}{\numberline {5}Metodologia}{15}{}%
-\contentsline {chapter}{Bibliografía}{17}{}%
+\contentsline {chapter}{\numberline {3}Procesos estocásticos y propiedad de Markov (Marco Teorico)}{9}{}%
+\contentsline {section}{\numberline {3.1}Procesos estocastcos}{9}{}%
+\contentsline {section}{\numberline {3.2}cadenas de Markov}{9}{}%
+\contentsline {section}{\numberline {3.3}Suavizadores Bayesianos}{11}{}%
+\contentsline {section}{\numberline {3.4}Suavizadores Bayesianos}{11}{}%
+\contentsline {section}{\numberline {3.5}Filtros de kalman}{12}{}%
+\contentsline {section}{\numberline {3.6}Filtros de kalman por conjuntos}{13}{}%
+\contentsline {chapter}{\numberline {4}Datos}{15}{}%
+\contentsline {section}{\numberline {4.1}Archivos CSV}{16}{}%
+\contentsline {subsection}{\numberline {4.1.1}Estructura de la base de datos}{16}{}%
+\contentsline {subsection}{\numberline {4.1.2}Catálogos normativos}{16}{}%
+\contentsline {subsubsection}{Diagnósticos por laboratorio y clasificación final}{17}{}%
+\contentsline {subsubsection}{Sector sanitario y geografía}{17}{}%
+\contentsline {subsubsection}{Variables categóricas generales y sociodemográficas}{17}{}%
+\contentsline {subsubsection}{Pruebas diagnósticas y resultados de laboratorio}{18}{}%
+\contentsline {subsubsection}{Clasificaciones epidemiológicas finales}{18}{}%
+\contentsline {section}{\numberline {4.2}Cambios metodológicos y exploración de los datos}{19}{}%
+\contentsline {chapter}{\numberline {5}Metodologia}{21}{}%
+\contentsline {chapter}{Bibliografía}{23}{}%

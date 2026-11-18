@@ -1,6 +1,14 @@
 \chapter{Procesos estocásticos y propiedad de Markov (Marco Teorico)}
 
-/section{Procesos estocastcos}
+\section{Procesos estocastcos}
+
+
+En el capítulo anterior vimos que, conociendo las tasas y el estado inicial, podemos obtener una trayectoria del modelo SIRD. Ahora bien, cuando estas cantidades son inciertas, hay varias trayectorias compatibles con lo que conocemos de la epidemia. Para representar esa incertidumbre y modificar nuestra estimación conforme se dispone de datos, comencemos por definir el espacio en el que trabajaremos.
+
+Consideremos un espacio de probabilidad $(\Omega,\mathcal F,\mathbb P)$ y un espacio de estados medible $(E,\mathcal E)$. Un proceso estocástico es una familia de variables aleatorias $(X_t)_{t\in T}$ con valores en $E$, donde $T$ es el conjunto de índices temporales. Para cada instante $t$, $X_t$ representa el estado del sistema y, para una realización $\omega\in\Omega$, los valores $X_t(\omega)$ forman una trayectoria. Así, la distribución de $X_t$ describe la incertidumbre en un instante. Para describir cómo se relacionan estados de distintos instantes se requieren sus distribuciones conjuntas \cite{durrett2019}\label{cita:durrett2019}.
+
+En nuestro caso, las ecuaciones del SIRD están definidas en tiempo continuo, pero las observaciones se incorporan en instantes discretos $t_0,t_1,\ldots$. Escribiremos $X_k$ para el estado en $t_k$. El índice $k$ identifica una fecha de actualización, mientras que la evolución entre fechas puede seguir las ecuaciones diferenciales del modelo.
+
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -39,8 +47,130 @@ La pérdida de memoria es una propiedad base de las cadenas de Markov. Indica qu
 La homogeneidad temporal se refiere al elemento $p_{ij}$, que indica la probabilidad de transitar del estado $i$ al estado $j$. Esta probabilidad depende únicamente de la pareja de estados $(i, j)$ y no del instante $n$ en el que nos encontremos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+En un espacio de estados medible, podemos expresar la misma propiedad mediante eventos. Para todo $A\in\mathcal E$, la propiedad de Markov se escribe como
+\begin{equation}
+\label{eq:markov}
+    \mathbb P(X_{k+1}\in A\mid X_0,\ldots,X_k)
+    =\mathbb P(X_{k+1}\in A\mid X_k)
+    \qquad \text{casi seguramente}.
+\end{equation}
+En un espacio contable basta considerar los conjuntos de un solo estado. Entonces, para $A=\{j\}$ y $X_k=i$, el lado derecho es $p_{ij}$ si la cadena es homogénea.
+
+Cabe notar que la propiedad de Markov se refiere a la información necesaria para describir la transición. La homogeneidad, por otro lado, indica que la misma ley se aplica en todos los pasos. Podemos tener un proceso de Markov cuya ley de transición cambie de una fecha a otra. En un espacio continuo, escribimos esa ley mediante un núcleo $M_k(x,A)$, que da la probabilidad de que $X_k$ pertenezca a $A$ cuando el estado anterior es $X_{k-1}=x$.
+
+Ahora podemos preguntarnos qué debe contener el estado para que la descripción anterior sea apropiada. Si las tasas cambian con el tiempo y son desconocidas, conocer únicamente los cuatro compartimientos puede ser insuficiente para describir su evolución. Una forma de incorporar esta información consiste en ampliar el estado con las tasas:
+\begin{equation}
+    X_k=(S_k,I_k,R_k,D_k,\beta_k,\gamma_k,\delta_k)^{\mathsf T}.
+    \label{eq:estado-ampliado}
+\end{equation}
+
+La ampliación requiere asignar una ley de evolución a las tasas. Por ejemplo, se pueden representar mediante un paseo aleatorio en escala logarítmica si se supone que son estrictamente positivas. En ese caso, se agregan perturbaciones de media cero a los logaritmos de las tasas entre dos fechas. La dispersión de estas perturbaciones controla cuánto pueden cambiar de un paso al siguiente. Si la evolución de los compartimientos se obtiene integrando el SIRD con las tasas especificadas para el intervalo y las nuevas perturbaciones son independientes del pasado, se dispone de una transición que puede formularse a partir del estado actual.
+
+Por otro lado, llamemos $Y_k$ a la observación en la fecha $t_k$. Un modelo en espacio de estados especifica la transición $M_k$ y una ley de observación cuya densidad o función de masa denotaremos por $g_k(y\mid x)$. En esta formulación, dado $X_k$, la ley de $Y_k$ es independiente del resto de los estados y de las demás observaciones. Si se observan flujos en un intervalo, como las defunciones diarias, la cantidad predicha depende de dos extremos. Para usar la formulación anterior se puede incluir en el estado el flujo acumulado durante el intervalo correspondiente. De forma análoga, si se consideran retrasos de registro, se puede incorporar al estado la información de días previos que requiera el modelo de observación.
+
+La distribución inicial describe lo que sabemos antes de incorporar las observaciones. En el SIRD, debe asignar probabilidad a estados compatibles con el tamaño de la población y con el significado de los compartimientos. Por ejemplo, si se fija el total acumulado de defunciones al inicio del intervalo, la incertidumbre inicial sobre los infectados y los recuperados también modifica la cantidad de susceptibles compatible con ese total. De esta manera, las restricciones del modelo pueden inducir dependencia entre componentes desde la inicialización.
+
+Por otra parte, una observación ausente y un conteo igual a cero representan situaciones diferentes. Si falta un dato y su ausencia no es informativa sobre el estado, podemos propagar la distribución hasta la fecha siguiente sin realizar la corrección correspondiente. Si el conteo observado es cero, este debe evaluarse mediante el modelo de observación y puede reducir el peso de aquellas trayectorias que predicen muchos eventos registrados. Así, la decisión de actualizar la estimación depende tanto del dato disponible como del significado que se asigna a su registro.
+
+
+
+
+
+
 \section{Suavizadores Bayesianos}
+
+
+\section{Suavizadores Bayesianos}
+
+Una vez que disponemos de un modelo para el estado y de otro para las observaciones, podemos precisar qué significa actualizar nuestra creencia. Escribamos $y_{1:k}$ para los datos disponibles hasta el instante $k$ y $\pi_{k\mid j}$ para la distribución de $X_k$ condicionada a $Y_{1:j}=y_{1:j}$. Entonces, la predicción y la actualización bayesianas se expresan como \cite{sarkka2023}\label{cita:sarkka2023}
+\begin{align}
+    \pi_{k\mid k-1}(A)
+        &= \int_E M_k(x,A)\,\pi_{k-1\mid k-1}(dx),\\
+    \pi_{k\mid k}(dx)
+        &= \frac{g_k(y_k\mid x)\,\pi_{k\mid k-1}(dx)}
+        {\displaystyle \int_E g_k(y_k\mid u)\,\pi_{k\mid k-1}(du)} .
+\end{align}
+
+La primera ecuación propaga la distribución del estado anterior mediante el modelo. La segunda asigna más peso a los estados que hacen más verosímil la observación, siempre que la constante de normalización sea positiva. Al repetir estas dos operaciones obtenemos el filtrado de la trayectoria conforme llegan los registros.
+
+Ahora bien, si ya contamos con observaciones hasta una fecha final $K$, podemos preguntarnos qué nos dicen esos datos acerca de un estado anterior $X_k$, con $k<K$. La distribución $\pi_{k\mid K}$ se conoce como distribución suavizada. Podemos obtenerla combinando la distribución suavizada del estado siguiente con la ley del estado anterior condicionada a ese estado y a los datos disponibles hasta $k$:
+\begin{equation}
+    \pi_{k\mid K}(A)=\int_E
+        \mathbb P(X_k\in A\mid X_{k+1}=u,Y_{1:k}=y_{1:k})
+        \,\pi_{k+1\mid K}(du).
+\end{equation}
+La propiedad de Markov permite efectuar esta actualización hacia atrás, ya que, dado $X_{k+1}$, los datos posteriores a $k$ no añaden información directa sobre $X_k$. Por ejemplo, si en fechas posteriores aparece un aumento de defunciones, el suavizado puede revisar la estimación de infectados que se obtuvo en fechas anteriores. Esto depende de la relación que el modelo establezca entre los estados de ambas fechas.
+
+En el caso lineal gaussiano, el suavizador de Rauch, Tung y Striebel utiliza las estimaciones del filtro en un recorrido hacia adelante y las revisa mediante una recursión hacia atrás. Esta recursión relaciona cada estado filtrado con el estado siguiente a través del modelo de transición \cite{rauch1965}\label{cita:rauch1965}. La distinción entre filtrado y suavizado se refiere, por tanto, a las observaciones que se usan para estimar un estado en una fecha dada.
+
+Esta distinción también afecta la manera de evaluar las estimaciones. Si queremos saber qué habría podido estimarse cuando solo se disponía de los primeros registros, debemos reconstruir la información disponible hasta la fecha de interés. Una estimación suavizada responde a una pregunta retrospectiva y puede aprovechar observaciones que todavía no existían en aquel momento. Por ejemplo, los datos de defunciones disponibles al final de una ola pueden informar sobre el comienzo de esa ola. Para evaluar un pronóstico emitido antes de conocer tales datos, la distribución pertinente es la que se obtiene con las observaciones disponibles en la fecha de emisión.
+
 
 \section{Filtros de kalman}
 
+Consideremos ahora el caso en que la transición y la observación son lineales:
+\begin{equation}
+    X_k=F_kX_{k-1}+W_k,\qquad Y_k=H_kX_k+V_k,
+\end{equation}
+donde $F_k$ propaga el estado y $H_k$ lo lleva al espacio de observación. Supongamos que el estado inicial es gaussiano y que los errores $W_k$ y $V_k$ son gaussianos de media cero, independientes entre sí, entre instantes y del estado inicial, con covarianzas $Q_k$ y $R_k$, respectivamente. En este capítulo, $R_k$ en las ecuaciones del filtro denota la covarianza del error de observación, mientras que en el estado ampliado indica el número de recuperados. En estas condiciones la distribución filtrada es gaussiana y el filtro de Kalman actualiza exactamente su media y su covarianza \cite{kalman1960}\label{cita:kalman1960}.
+
+Denotemos por $m_k^-$ y $P_k^-$ la media y la covarianza de la predicción, y por $m_k^+$ y $P_k^+$ las que se obtienen al incorporar $y_k$. Las ecuaciones de predicción son
+\begin{equation}
+    m_k^-=F_km_{k-1}^+,\qquad
+    P_k^-=F_kP_{k-1}^+F_k^{\mathsf T}+Q_k.
+\end{equation}
+Si la covarianza de la innovación es invertible, la actualización está dada por
+\begin{align}
+    K_k &= P_k^-H_k^{\mathsf T}
+      (H_kP_k^-H_k^{\mathsf T}+R_k)^{-1},\\
+    m_k^+ &= m_k^-+K_k(y_k-H_km_k^-),\\
+    P_k^+ &= P_k^--K_kH_kP_k^-.
+\end{align}
+
+La diferencia $y_k-H_km_k^-$, llamada innovación, indica cuánto se aparta la observación de lo que se esperaba medir. La ganancia $K_k$ lleva esa diferencia al espacio del estado. Así, una componente que no se observa directamente puede actualizarse si, en la predicción, presenta covarianza con alguna componente observada. En este punto podemos ver por qué importa distinguir $Q_k$ de $R_k$: la primera covarianza representa incertidumbre en la evolución del proceso, mientras que la segunda representa incertidumbre en la observación dado el estado.
+
+Ahora bien, la magnitud de una innovación debe interpretarse en relación con la incertidumbre que se esperaba en la observación. Una diferencia de la misma magnitud puede ser habitual en una serie muy variable y poco probable en otra cuyo registro es más estable. Además, si las innovaciones mantienen el mismo signo durante varias fechas, conviene examinar si el modelo se aparta de la serie de manera sistemática. En nuestro caso, un desfase entre la fecha predicha de un evento y la fecha con la que se construyó el registro puede producir una sucesión de innovaciones relacionadas entre sí. Ajustar la covarianza de los errores modifica el peso de esas diferencias, mientras que representar el desfase requiere revisar la relación entre el estado y la observación.
+
+En el SIRD, el flujo de contagio depende del producto de los susceptibles, los infectados y la tasa de contagio. Al incluir las tasas en el estado, la transición sigue siendo no lineal. Para conservar la dinámica del SIRD en la etapa de predicción, podemos hacer evolucionar un conjunto de estados y estimar a partir de ellos las covarianzas necesarias para la actualización.
+
 \section{Filtros de kalman por conjuntos}
+
+El filtro de Kalman por conjuntos (EnKF) representa la incertidumbre del estado mediante un conjunto de realizaciones. Cada miembro evoluciona con el modelo de transición, de manera que la dispersión de los pronósticos refleja tanto la incertidumbre previa como las perturbaciones incorporadas durante el paso. Esta propagación fue propuesta por Evensen para estimar covarianzas de pronóstico en problemas de asimilación secuencial con dinámica no lineal \cite{evensen1994}\label{cita:evensen1994}.
+
+Sean $x_k^{-,(i)}$, con $i=1,\ldots,M$ y $M\geq 2$, los miembros pronosticados. Si $h_k$ representa la parte del modelo de observación que corresponde a la señal esperada, definimos $z_k^{(i)}=h_k(x_k^{-,(i)})$. A partir de los pares $(x_k^{-,(i)},z_k^{(i)})$ calculamos la covarianza muestral cruzada $C_k^{xz}$ y la covarianza muestral $C_k^{zz}$ de los pronósticos de la observación. Con error de observación aditivo e independiente, de covarianza $R_k$, la ganancia de ensamble es
+\begin{equation}
+    \widehat K_k=C_k^{xz}(C_k^{zz}+R_k)^{-1},
+\end{equation}
+siempre que la matriz que se invierte sea no singular. En la versión con observaciones perturbadas, el análisis de cada miembro toma la forma
+\begin{equation}
+    x_k^{+,(i)}=x_k^{-,(i)}
+         +\widehat K_k\bigl(y_k+\varepsilon_k^{(i)}-z_k^{(i)}\bigr),
+    \qquad \varepsilon_k^{(i)}\sim\mathcal N(0,R_k),
+\end{equation}
+con perturbaciones independientes entre miembros y del ensamble de pronóstico. Se introducen para reproducir, en esperanza respecto de estas perturbaciones, la contribución del error de observación a la covarianza del análisis en el caso lineal \cite{burgers1998}\label{cita:burgers1998}. Hay también versiones deterministas, como el filtro de ajuste de ensamble, que modifican la dispersión de los miembros mediante una transformación y utilizan la observación sin perturbarla \cite{anderson2001}\label{cita:anderson2001}.
+
+Volvamos al estado ampliado \eqref{eq:estado-ampliado}. Si los miembros con mayores valores de $\delta_k$ predicen un mayor número de defunciones, la covarianza cruzada permite que la innovación en las defunciones corrija esa tasa. Algo similar puede ocurrir con $\beta_k$ y $\gamma_k$, siempre que los efectos de sus variaciones se reflejen en los pronósticos observables. En cada ciclo, el conjunto actualizado proporciona las condiciones iniciales para el siguiente paso, de modo que las observaciones influyen en la trayectoria estimada de los compartimientos y de las tasas.
+
+Sin embargo, hay que considerar tres aspectos al interpretar la actualización. Primero, la corrección es lineal en la innovación y usa los primeros dos momentos del ensamble. Con dinámica u observaciones no lineales, esta operación constituye una aproximación a la actualización bayesiana. Segundo, las covarianzas estimadas con un conjunto finito pueden reflejar asociaciones debidas al muestreo, y una dispersión insuficiente puede reducir la capacidad de corregir el pronóstico \cite{evensen2009}\label{cita:evensen2009}. Tercero, aunque la propagación del SIRD conserve las restricciones del modelo, la corrección aditiva puede generar cantidades negativas o violar la acumulación de recuperados y fallecidos entre fechas. La representación de las variables y las restricciones del análisis deben ser congruentes con la dinámica que se desea estimar.
+
+Consideremos dos miembros que anticipan el mismo número de defunciones diarias, aunque uno tenga más infectados y una tasa $\delta_k$ menor que el otro. Ambos pueden recibir una corrección parecida a partir de ese dato, ya que la innovación se forma en el espacio de observación y la ganancia se estima para todo el ensamble. Esto ilustra por qué una serie puede informar sobre una combinación de componentes sin distinguir bien los valores de cada una. En tal situación, una serie adicional puede ayudar si responde de manera diferente a los cambios de las tasas y si se conoce su relación con los compartimientos.
+
+Por otra parte, el tamaño del ensamble afecta las covarianzas que se pueden representar. Como las desviaciones de los miembros respecto a su media suman cero, el rango de la covarianza muestral del estado es a lo sumo $M-1$. Este límite se vuelve relevante si añadimos tasas, flujos de intervalos anteriores o variables para representar retrasos. En ese caso, algunas direcciones de cambio pueden tener escasa representación en el pronóstico. Aumentar el tamaño del conjunto reduce la limitación del rango hasta donde lo permite la dimensión del estado, aunque la información sobre las tasas sigue dependiendo de los registros.
+
+Finalmente, la dispersión que asignamos a la evolución de las tasas influye en la interpretación de las trayectorias. Si las perturbaciones son pequeñas, las tasas tienden a conservar los valores de fechas anteriores y pueden responder lentamente a cambios que sí se reflejan en las observaciones. Si son grandes, el ensamble permite variaciones rápidas y parte de las fluctuaciones del registro puede trasladarse a las tasas. La dispersión de las estimaciones debe leerse a la luz de estos supuestos y de las series que se incorporan a la actualización.
+
+También es necesario distinguir entre la capacidad de reproducir una serie y la capacidad de anticipar sus cambios. En el instante en que se asimila un conteo, el ensamble actualizado ya contiene información de ese mismo registro. En cambio, el pronóstico elaborado antes de la actualización permite examinar qué parte de la evolución habría anticipado el modelo con la información anterior. Así, al estudiar los resultados del filtro, es pertinente comparar la observación con ambas cantidades y recordar en qué momento se incorporó el dato.
+
+Si las discrepancias se concentran al inicio o al final de una ola, una explicación posible es que el modelo represente de manera insuficiente los cambios entre periodos de crecimiento y descenso. Otra es que la calidad o la oportunidad del registro sea distinta en esos intervalos. En ambos casos, conviene considerar de forma conjunta las innovaciones y la dispersión del pronóstico. Una innovación grande frente a un conjunto poco disperso indica que el dato se apartó de lo esperado bajo los supuestos adoptados, pero esa comparación por sí sola no permite atribuir el desacuerdo a una tasa particular.
+
+Otra consecuencia de trabajar con un ensamble es que las estimaciones puntuales pueden resumir de manera distinta la información disponible. Por ejemplo, si algunos miembros asignan un número alto de infectados a una fecha y otros asignan un número bajo, la media puede quedar en un valor intermedio aunque pocos miembros estén cerca de ella. En ese caso, la distribución de los miembros ayuda a interpretar la media y a reconocer cuánto acuerdo existe entre las trayectorias. En un problema no lineal, ese resumen depende tanto de la propagación del modelo como de la aproximación que se utiliza durante la corrección.
+
+Al observar la dispersión por separado en cada compartimiento puede perderse información sobre la relación entre sus estimaciones. Dos miembros pueden tener valores distintos de $S_k$ e $I_k$ y, al mismo tiempo, respetar el mismo total poblacional. Por ello, para interpretar la incertidumbre en una fecha conviene considerar que cada miembro representa un estado conjunto. La incertidumbre de una cantidad que depende de varias componentes, como el número de reproducción instantáneo, puede evaluarse calculando dicha cantidad en cada miembro que satisfaga las condiciones del modelo. De esta forma, se conserva la relación entre las tasas y los compartimientos que intervienen en el cálculo.
+
+Esta relación también es importante cuando se examina el efecto de la incertidumbre inicial. Si varias condiciones iniciales producen pronósticos similares para las variables observadas, la asimilación puede corregir con rapidez la serie observada y dejar una dispersión considerable en las cantidades ocultas. La evolución de esta dispersión puede ser distinta para los susceptibles, los recuperados y cada una de las tasas. Así, para interpretar qué aporta la asimilación, resulta necesario examinar qué componentes cambian al incorporar los datos y en cuáles persiste la incertidumbre del pronóstico.
+
+Con esto podemos retomar la pregunta planteada al final del capítulo anterior. El EnKF permite actualizar la estimación de las tasas a partir de las observaciones mediante la covarianza entre ambas cantidades. La información disponible para calcular esa corrección depende de cuáles son los eventos registrados, de la fecha que se les asigna y de cómo se relacionan con los flujos del SIRD. Por ello, el siguiente capítulo describe los registros utilizados y las variables con las que se construyen las series de observación.
+
+\label{fin:cuerpo}
