@@ -5,6 +5,11 @@ Jeffrey~L. Anderson.
 \newblock An ensemble adjustment {Kalman} filter for data assimilation.
 \newblock {\em Monthly Weather Review}, 129(12):2884--2903, 2001.
 
+\bibitem{bauch2025}
+Martin Bauch and Ulf B{\"u}ntgen.
+\newblock Climate-driven changes in mediterranean grain trade mitigated famine but introduced the black death to medieval europe.
+\newblock {\em Communications Earth \& Environment}, 2025.
+
 \bibitem{burgers1998}
 Gerrit Burgers, Peter~Jan van Leeuwen, and Geir Evensen.
 \newblock Analysis scheme in the ensemble {Kalman} filter.
@@ -36,14 +41,25 @@ Geir Evensen.
 \newblock Springer, 2nd edition, 2009.
 
 \bibitem{german2021}
-G.~T.~H. Germán.
+Hugo~Germ{\'a}n Gonz{\'a}lez~Toapanta.
 \newblock Pandemias en la historia: la {peste negra} y la {gripe española}, {COVID-19} y crisis capitalista.
-\newblock DSpace UNACH, August 2021.
+\newblock {\em Chaki{\~n}an, Revista de Ciencias Sociales y Humanidades}, pages 130--145, 2021.
+\newblock Núm.~14.
 
 \bibitem{kalman1960}
 R.~E. Kalman.
 \newblock A new approach to linear filtering and prediction problems.
 \newblock {\em Journal of Basic Engineering}, 82(1):35--45, 1960.
+
+\bibitem{keeling2008}
+Matt~J. Keeling and Pejman Rohani.
+\newblock {\em Modeling Infectious Diseases in Humans and Animals}.
+\newblock Princeton University Press, 2008.
+
+\bibitem{kermack1927}
+W.~O. Kermack and A.~G. McKendrick.
+\newblock A contribution to the mathematical theory of epidemics.
+\newblock {\em Proceedings of the Royal Society of London. Series A}, 115(772):700--721, 1927.
 
 \bibitem{murray1989}
 J.~D. Murray.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  18 NOV 2026 11:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  18 NOV 2026 23:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -209,25 +209,25 @@ LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 8.
- (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux) (./formato-cap5.aux))
+ (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux))
 \openout1 = `formato-detallado.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Info: Redefining \. on input line 39.
-LaTeX Info: Redefining \% on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Info: Redefining \. on input line 40.
+LaTeX Info: Redefining \% on input line 40.
  (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count300
@@ -247,19 +247,19 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 41.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 42.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (24.00002pt too wide) in paragraph at lines 41--41
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 42--42
 []  
  []
 
@@ -270,7 +270,7 @@ Overfull \hbox (24.00002pt too wide) in paragraph at lines 41--41
 {/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./escudo-2.png>] [2
 
 ]
-Overfull \hbox (24.00002pt too wide) in paragraph at lines 42--42
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 43--43
 []  
  []
 
@@ -300,12 +300,12 @@ Cap\'{\i }tulo 1.
 
 
 ])
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 56.
-LaTeX Info: Redefining \. on input line 56.
-LaTeX Info: Redefining \% on input line 56.
+(babel)             Reported on input line 57.
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
  [2]
 \openout2 = `formato-cap2.aux'.
 
@@ -317,25 +317,25 @@ Cap\'{\i }tulo 2.
 
 
 ]
-LaTeX Info: Redefining \. on input line 66.
-LaTeX Info: Redefining \% on input line 66.
-LaTeX Info: Redefining \. on input line 66.
-LaTeX Info: Redefining \% on input line 66.
+LaTeX Info: Redefining \. on input line 70.
+LaTeX Info: Redefining \% on input line 70.
+LaTeX Info: Redefining \. on input line 70.
+LaTeX Info: Redefining \% on input line 70.
  [4]
 LaTeX Info: Redefining \. on input line 106.
 LaTeX Info: Redefining \% on input line 106.
 LaTeX Info: Redefining \. on input line 106.
 LaTeX Info: Redefining \% on input line 106.
  [5]
-LaTeX Info: Redefining \. on input line 128.
-LaTeX Info: Redefining \% on input line 128.
-LaTeX Info: Redefining \. on input line 128.
-LaTeX Info: Redefining \% on input line 128.
+LaTeX Info: Redefining \. on input line 123.
+LaTeX Info: Redefining \% on input line 123.
+LaTeX Info: Redefining \. on input line 123.
+LaTeX Info: Redefining \% on input line 123.
  [6])
-LaTeX Info: Redefining \. on input line 57.
-LaTeX Info: Redefining \% on input line 57.
-LaTeX Info: Redefining \. on input line 57.
-LaTeX Info: Redefining \% on input line 57.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
  [7]
 \openout2 = `formato-cap3.aux'.
 
@@ -347,92 +347,87 @@ LaTeX Info: Redefining \% on input line 57.
 ]
 Cap\'{\i }tulo 3.
 [9]
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
  [10]
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
  [11]
-LaTeX Info: Redefining \. on input line 141.
-LaTeX Info: Redefining \% on input line 141.
-LaTeX Info: Redefining \. on input line 141.
-LaTeX Info: Redefining \% on input line 141.
+LaTeX Info: Redefining \. on input line 142.
+LaTeX Info: Redefining \% on input line 142.
+LaTeX Info: Redefining \. on input line 142.
+LaTeX Info: Redefining \% on input line 142.
  [12]
-LaTeX Info: Redefining \. on input line 163.
-LaTeX Info: Redefining \% on input line 163.
-LaTeX Info: Redefining \. on input line 163.
-LaTeX Info: Redefining \% on input line 163.
- [13])
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
-LaTeX Info: Redefining \. on input line 58.
-LaTeX Info: Redefining \% on input line 58.
- [14]
+LaTeX Info: Redefining \. on input line 168.
+LaTeX Info: Redefining \% on input line 168.
+LaTeX Info: Redefining \. on input line 168.
+LaTeX Info: Redefining \% on input line 168.
+ [13]
+LaTeX Info: Redefining \. on input line 184.
+LaTeX Info: Redefining \% on input line 184.
+LaTeX Info: Redefining \. on input line 184.
+LaTeX Info: Redefining \% on input line 184.
+ [14])
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+ [15]
 \openout2 = `formato-cap4.aux'.
 
- (./formato-cap4.tex
-Cap\'{\i }tulo 4.
-[15
+ (./formato-cap4.tex [16
 
 
 
 
 ]
-Underfull \hbox (badness 2221) in paragraph at lines 41--42
+Cap\'{\i }tulo 4.
+[17]
+Underfull \hbox (badness 2221) in paragraph at lines 42--43
 []\T1/cmr/bx/n/10 Demografía y ubi-ca-ción: \T1/cmtt/m/n/10 SEXO\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 EDAD\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 NACIONALIDAD\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 ENTIDAD_UM\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 ENTIDAD_NAC\T1/cmr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 []\T1/cmr/bx/n/10 Laboratorio y diag-nós-ti-co: \T1/cmtt/m/n/10 TOMA_MUESTRA_LAB\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 RESULTADO_PCR\T1/cmr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 []\T1/cmr/bx/n/10 Clasificación epi-de-mio-ló-gi-ca fi-nal: \T1/cmtt/m/n/10 CLASIFICACION_FINAL_COVID \T1/cmr/m/n/10 y
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 58.
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
-LaTeX Info: Redefining \. on input line 60.
-LaTeX Info: Redefining \% on input line 60.
-[16]
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
- [17{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
- [18]
-Overfull \hbox (528.47539pt too wide) in paragraph at lines 170--170
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 59.
+LaTeX Info: Redefining \. on input line 61.
+LaTeX Info: Redefining \% on input line 61.
+LaTeX Info: Redefining \. on input line 61.
+LaTeX Info: Redefining \% on input line 61.
+[18]
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
+ [19{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+LaTeX Info: Redefining \. on input line 161.
+LaTeX Info: Redefining \% on input line 161.
+LaTeX Info: Redefining \. on input line 161.
+LaTeX Info: Redefining \% on input line 161.
+ [20]
+Overfull \hbox (528.47539pt too wide) in paragraph at lines 171--171
 []\T1/cmtt/m/n/10 var_no_necesarias=['ORIGEN','SECTOR','ENTIDAD_UM','ENTIDAD_NAC','ENTIDAD_RES','MUNICIPIO_RES','EMBARAZO','HABLA_LENGUA_INDIG','INDIGENA','MIGRANTE','PAIS_NACIONALIDAD','PAIS_ORIGEN'][] 
  []
 
 )
-LaTeX Info: Redefining \. on input line 59.
-LaTeX Info: Redefining \% on input line 59.
-LaTeX Info: Redefining \. on input line 59.
-LaTeX Info: Redefining \% on input line 59.
- [19]
-\openout2 = `formato-cap5.aux'.
-
- (./formato-cap5.tex [20
-
-
-
-
-]
-Cap\'{\i }tulo 5.
-) [21] [22
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+ [21] [22
 
 
 
@@ -441,25 +436,25 @@ Cap\'{\i }tulo 5.
 ]) [24] (./formato-detallado.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
- (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux) (./formato-cap5.aux))
+ (./formato-cap1.aux) (./formato-cap2.aux) (./formato-cap3.aux) (./formato-cap4.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5124 strings out of 467525
- 80373 string characters out of 5418982
- 500690 words of memory out of 5000000
- 33934 multiletter control sequences out of 15000+600000
+ 5111 strings out of 467525
+ 79916 string characters out of 5418982
+ 500562 words of memory out of 5000000
+ 33928 multiletter control sequences out of 15000+600000
  645577 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,11n,79p,1047b,664s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb>
-Output written on formato-detallado.pdf (32 pages, 470990 bytes).
+ 72i,12n,79p,1736b,664s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb>
+Output written on formato-detallado.pdf (32 pages, 482073 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
+ 246 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

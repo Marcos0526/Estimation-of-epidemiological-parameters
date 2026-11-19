@@ -1,4 +1,5 @@
 \chapter{Datos}
+\label{cap:datos}
 
 La información con la que se trabajó en esta investigación es muy variada: desde artículos y publicaciones que se enfocaron en puntos clave, los cuales ayudaron a tomar decisiones sobre cómo proseguir con la investigación, hasta la columna vertebral del análisis, que son los registros públicos de cada persona reportada en México.
 
@@ -192,6 +193,8 @@ Clave & Clasificación final & Registros \\
 En este periodo se registraron 7,713,405 casos positivos (claves 1, 2 y 3) y 335,098 defunciones.
 
 A partir de este punto, no es viable trabajar siempre con todo el CSV, por lo que se creó una función que, dadas una fecha inicial y una fecha final, genera un nuevo archivo que excluye los registros fuera de dicho rango. El filtrado se realiza con la variable \texttt{FECHA\_INGRESO}.
+
+Ese recorte selecciona registros por fecha de ingreso. Si se construye una serie de defunciones por fecha de ocurrencia, el intervalo debe aplicarse a \texttt{FECHA\_DEF}. Un recorte previo por ingreso puede dejar fuera defunciones ocurridas dentro del intervalo de personas ingresadas antes de su inicio.
 %%%%%%%%%%%
 
 Sin embargo, como es de esperarse, los datos reportados presentan algunas situaciones que deben analizarse. La primera es que, desde el sentido común, es probable que dichos datos no reflejen del todo el estado real de la epidemia, ya que no todas las personas acuden a centros de salud. Por ello, el registro que se tiene de los compartimentos de infectados, recuperados y fallecidos es menor al real.

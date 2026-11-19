@@ -5,47 +5,46 @@ A level-1 auxiliary file: formato-cap1.aux
 A level-1 auxiliary file: formato-cap2.aux
 A level-1 auxiliary file: formato-cap3.aux
 A level-1 auxiliary file: formato-cap4.aux
-A level-1 auxiliary file: formato-cap5.aux
 The style file: plain.bst
 Database file #1: tesis.bib
-You've used 17 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            607 strings with 6438 characters,
-and the built_in function-call counts, 4753 in all, are:
-= -- 465
-> -- 181
-< -- 1
-+ -- 77
-- -- 56
-* -- 308
-:= -- 811
-add.period$ -- 53
-call.type$ -- 17
-change.case$ -- 76
+            625 strings with 6996 characters,
+and the built_in function-call counts, 5766 in all, are:
+= -- 571
+> -- 220
+< -- 2
++ -- 93
+- -- 68
+* -- 369
+:= -- 977
+add.period$ -- 63
+call.type$ -- 20
+change.case$ -- 90
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 182
-empty$ -- 417
-format.name$ -- 56
-if$ -- 985
+cite$ -- 20
+duplicate$ -- 228
+empty$ -- 493
+format.name$ -- 68
+if$ -- 1200
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 20
-newline$ -- 90
-num.names$ -- 34
-pop$ -- 92
+int.to.str$ -- 20
+missing$ -- 25
+newline$ -- 106
+num.names$ -- 40
+pop$ -- 104
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 74
 quote$ -- 0
-skip$ -- 116
+skip$ -- 151
 stack$ -- 0
-substring$ -- 287
-swap$ -- 19
-text.length$ -- 1
+substring$ -- 360
+swap$ -- 31
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
+type$ -- 66
 warning$ -- 0
-while$ -- 48
-width$ -- 19
-write$ -- 189
+while$ -- 59
+width$ -- 22
+write$ -- 223
