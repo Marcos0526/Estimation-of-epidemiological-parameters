@@ -9,9 +9,10 @@
 \contentsline {section}{\numberline {2.2}El modelo SIRD}{4}{}%
 \contentsline {chapter}{\numberline {3}Procesos estocásticos y propiedad de Markov }{9}{}%
 \contentsline {section}{\numberline {3.1}Cadenas de Markov}{9}{}%
-\contentsline {section}{\numberline {3.2}Filtrado y suavizado bayesianos}{11}{}%
-\contentsline {section}{\numberline {3.3}Filtro de Kalman}{12}{}%
-\contentsline {section}{\numberline {3.4}Filtro de Kalman por ensamble}{13}{}%
+\contentsline {section}{\numberline {3.2}Filtrado y suavizado bayesianos}{10}{}%
+\contentsline {section}{\numberline {3.3}Filtro de Kalman}{11}{}%
+\contentsline {section}{\numberline {3.4}Filtro de Kalman por ensamble}{12}{}%
+\contentsline {section}{\numberline {3.5}Formulación del modelo SIRD en espacio de estados y estimación por ensamble}{12}{}%
 \contentsline {chapter}{\numberline {4}Datos}{17}{}%
 \contentsline {section}{\numberline {4.1}Archivos CSV}{18}{}%
 \contentsline {subsection}{\numberline {4.1.1}Estructura de la base de datos}{18}{}%
