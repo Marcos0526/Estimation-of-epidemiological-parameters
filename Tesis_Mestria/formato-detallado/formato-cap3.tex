@@ -33,7 +33,7 @@ La primera característica define el estado inicial y especifica las probabilida
 
 La segunda característica combina dos propiedades fundamentales: la pérdida de memoria y la homogeneidad temporal.
 
-La pérdida de memoria es una propiedad base de las cadenas de Markov. Indica que la distribución del estado futuro depende únicamente del estado actual y es independiente de toda la historia pasada.
+La pérdida de memoria es una propiedad base de las cadenas de Markov. Dado $X_n$, el estado $X_{n+1}$ es condicionalmente independiente de $X_0,\ldots,X_{n-1}$.
 
 Para historias de probabilidad positiva,
 \[
@@ -62,7 +62,9 @@ Para cada $x\in E$, $M_k(x,\cdot)$ es una medida de probabilidad sobre $(E,\math
 
 Sea $Y_k$ una variable aleatoria con valores en un espacio boreliano estándar $(\mathcal Y,\mathcal G)$. Dada la trayectoria de estados, las observaciones son condicionalmente independientes y la ley de $Y_k$ depende de la trayectoria a través de $X_k$. Escribimos esta ley como $G_k(x,dy)=g_k(y\mid x)\,\nu(dy)$ cuando admite densidad respecto de una medida de referencia $\nu$.
 
+
 \section{Filtrado y suavizado bayesianos}
+\label{sec:filtrado-suavizado}
 
 Una vez que disponemos de un modelo para el estado y de otro para las observaciones, podemos precisar qué significa actualizar nuestra creencia. Escribamos $y_{1:k}$ para los datos disponibles hasta el instante $k$ y $\pi_{k\mid j}$ para la distribución de $X_k$ condicionada a $Y_{1:j}=y_{1:j}$. Entonces, la predicción y la actualización bayesianas se expresan como \cite{sarkka2023}\label{cita:sarkka2023}
 \begin{align}
@@ -95,6 +97,7 @@ Para evaluar un pronóstico del estado en la fecha $k$ emitido en la fecha $j<k$
 
 
 \section{Filtro de Kalman}
+\label{sec:kalman}
 
 
 Para $X_k\in\mathbb R^d$ y $Y_k\in\mathbb R^p$, sean $F_k\in\mathbb R^{d\times d}$ y $H_k\in\mathbb R^{p\times d}$.
@@ -124,8 +127,8 @@ La diferencia $y_k-H_km_k^-$, llamada innovación, indica cuánto se aparta la o
 
 
 Ahora bien, la magnitud de una innovación debe interpretarse en relación con la incertidumbre que se esperaba en la observación, dada por $H_kP_k^-H_k^{\mathsf T}+R_k^{\mathrm{obs}}$. Una diferencia de la misma magnitud puede ser habitual en una serie muy variable y poco probable en otra cuyo registro es más estable. Además, si las innovaciones mantienen el mismo signo durante varias fechas, conviene examinar si el modelo se aparta de la serie de manera sistemática.
-
 \section{Filtro de Kalman por ensamble}
+\label{sec:enkf}
 
 El filtro de Kalman por ensamble (EnKF) representa la incertidumbre del estado mediante un conjunto de realizaciones. Cada miembro evoluciona con el modelo de transición, de manera que la dispersión de los pronósticos refleja tanto la incertidumbre previa como las perturbaciones incorporadas durante el paso. Esta propagación fue propuesta por Evensen para estimar covarianzas de pronóstico en problemas de asimilación secuencial con dinámica no lineal \cite{evensen1994}\label{cita:evensen1994}.
 
@@ -152,11 +155,11 @@ Por otra parte, el tamaño del ensamble afecta las covarianzas que se pueden rep
 
 \subsection*{Estado y distribución inicial}
 
-En el espacio de probabilidad $(\Omega,\mathcal F,\mathbb P)$, sea $U_k=(S_k,I_k,R_k,D_k)^{\mathsf T}$ el vector de compartimientos en $t_k$. Para una población cerrada de tamaño $N$, sus valores pertenecen al simplex $\Delta_N=\{u\in[0,N]^4:\sum_{j=1}^4 u_j=N\}$.
+En el espacio de probabilidad $(\Omega,\mathcal F,\mathbb P)$, sea $U_k=(S_k,I_k,R(t_k),D_k)^{\mathsf T}$ el vector de compartimientos en $t_k$. Escribimos $R(t_k)$ para los recuperados y reservamos $R_t$ para el número de reproducción instantáneo. Para una población cerrada de tamaño $N$, sus valores pertenecen al simplex $\Delta_N=\{u\in[0,N]^4:\sum_{j=1}^4 u_j=N\}$.
 
 Ahora podemos preguntarnos qué debe contener el estado para que la descripción anterior sea apropiada. Si las tasas cambian con el tiempo y son desconocidas, conocer únicamente los cuatro compartimientos puede ser insuficiente para describir su evolución. Una forma de incorporar esta información consiste en ampliar el estado con las tasas:
 \begin{equation}
-    X_k=(S_k,I_k,R_k,D_k,\beta_k,\gamma_k,\delta_k)^{\mathsf T}.
+    X_k=(S_k,I_k,R(t_k),D_k,\beta_k,\gamma_k,\delta_k)^{\mathsf T}.
     \label{eq:estado-ampliado}
 \end{equation}
 
@@ -169,7 +172,7 @@ La distribución inicial describe lo que sabemos antes de incorporar las observa
 La ampliación requiere asignar una ley de evolución a las tasas. Por ejemplo, si las tres son estrictamente positivas, podemos usar $\ell_k=(\log\beta_k,\log\gamma_k,\log\delta_k)^{\mathsf T}$, con tasas expresadas en días inversos, y el paseo aleatorio $\ell_k=\ell_{k-1}+\eta_k$, con perturbaciones de media cero e independientes del pasado. Su dispersión controla cuánto pueden cambiar las tasas entre pasos. En este ejemplo se generan primero las tasas $\exp(\ell_k)$ y se mantienen fijas al integrar el SIRD \eqref{eq:sird} durante $(t_{k-1},t_k]$.
 Si se observan flujos diarios, definimos $A_k=S(t_{k-1})-S(t_k)$ y $B_k=D(t_k)-D(t_{k-1})$ a partir de cada trayectoria pronosticada en ese intervalo. El estado para el EnKF en este ejemplo es
 \begin{equation}
-    \widetilde X_k=(S_k,I_k,R_k,D_k,\ell_k^{\mathsf T},A_k,B_k)^{\mathsf T}.
+    \widetilde X_k=(S_k,I_k,R(t_k),D_k,\ell_k^{\mathsf T},A_k,B_k)^{\mathsf T}.
     \label{eq:estado-enkf}
 \end{equation}
 En el análisis se actualiza $\ell_k$ y se recuperan las tasas por exponenciación componente a componente. Los flujos se calculan a partir del primer intervalo de predicción.
@@ -178,15 +181,23 @@ Escribamos $\Phi_k(u,\theta)$ para la solución de \eqref{eq:sird} al final del 
 \[
  T_k((u,\ell),e)=(v,\ell+e,u_S-v_S,v_D-u_D).
 \]
-Para $k\geq1$ su espacio de llegada es $E=E_0\times[0,N]^2$, equipado con su sigma-álgebra de Borel. Si $q_k$ es la ley de la perturbación, el núcleo de Markov es $M_k(x,C)=\int \mathbf 1_C(T_k((u,\ell),e))\,q_k(de)$, donde $(u,\ell)$ son las primeras siete coordenadas de $x$. Los flujos anteriores se descartan al propagar. Aplicamos esta transformación a cada miembro con perturbaciones independientes.
+
+Para $k\geq1$ su espacio de llegada es $E_k=E=E_0\times[0,N]^2$, equipado con su sigma-álgebra de Borel. Si $q_k$ es la ley de la perturbación, el núcleo de Markov es $M_k(x,C)=\int \mathbf 1_C(T_k((u,\ell),e))\,q_k(de)$, donde $(u,\ell)$ son las primeras siete coordenadas de $x$. Así, $M_k$ es un núcleo de $E_{k-1}$ a $E_k$. En la primera predicción integramos $M_1(x,C)$ respecto de $\mu_0(dx)$ sobre $E_0$. Los flujos anteriores se descartan al propagar. Aplicamos esta transformación a cada miembro con perturbaciones independientes.
 
 \subsection*{Observaciones y predicción}
 
 Para dos conteos diarios, $Y_k$ toma valores en $\mathbb N_0^2$ con la sigma-álgebra de todos sus subconjuntos. El núcleo $G_k$ asigna probabilidades a los pares de conteos y $h_k(x)=\mathbb E[Y_k\mid\widetilde X_k=x]\in\mathbb R^2$ representa su señal esperada.
 
-Si se observan flujos en un intervalo, como las defunciones diarias, la cantidad predicha depende de dos extremos. Para usar la formulación anterior se puede incluir en el estado el flujo acumulado durante el intervalo correspondiente. De forma análoga, si se consideran retrasos de registro, se puede incorporar al estado la información de días previos que requiera el modelo de observación. Por ejemplo, si ambos conteos fueran completos y se fecharan por ocurrencia del evento, la señal esperada sería $h_k(\widetilde X_k)=(A_k,B_k)^{\mathsf T}$. Para los casos agrupados por fecha de ingreso, la señal debe relacionar el registro con infecciones de la misma fecha o de fechas previas y considerar su cobertura. Las defunciones agrupadas por fecha de ocurrencia corresponden al canal $B_k$ bajo las condiciones descritas en el capítulo anterior. El capítulo~\ref{cap:datos} distingue las fechas disponibles en el registro.
 
-Por otra parte, una observación ausente y un conteo igual a cero representan situaciones diferentes. Si falta un dato y su ausencia no es informativa sobre el estado, podemos propagar la distribución hasta la fecha siguiente sin realizar la corrección correspondiente. Si el conteo observado es cero, este debe evaluarse mediante el modelo de observación y puede reducir el peso de aquellas trayectorias que predicen muchos eventos registrados. Así, la decisión de actualizar la estimación depende tanto del dato disponible como del significado que se asigna a su registro.
+Si se observan flujos en un intervalo, como las defunciones diarias, la cantidad predicha depende de dos extremos. Para usar la formulación anterior se puede incluir en el estado el flujo acumulado durante el intervalo correspondiente. De forma análoga, si se consideran retrasos de registro, se puede incorporar al estado la información de días previos que requiera el modelo de observación. Por ejemplo, si ambos conteos fueran completos y se fecharan por ocurrencia del evento, la señal esperada sería $h_k(\widetilde X_k)=(A_k,B_k)^{\mathsf T}$. Para los casos agrupados por fecha de ingreso, una posible señal esperada es
+\[
+ h_{k,1}=\rho\sum_{j=0}^{L}w_j A_{k-j},
+ \qquad 0\leq\rho\leq1,\quad w_j\geq0,\quad \sum_{j=0}^{L}w_j=1.
+\]
+Aquí $\rho$ es la fracción de infecciones que llega a registrarse y $w_j$ es la probabilidad de un retraso de $j$ días entre infección e ingreso entre quienes se registran. El caso $L=0$ supone ingreso el día de la infección. Para $L>0$ añadimos al estado los $L$ flujos previos y desplazamos ese historial un día en cada transición. La metodología deberá precisar la cobertura, los retrasos y los valores o la distribución inicial de los flujos anteriores al primer intervalo. Las defunciones agrupadas por fecha de ocurrencia corresponden al canal $B_k$ bajo las condiciones descritas en el capítulo anterior. El capítulo~\ref{cap:datos} distingue las fechas disponibles en el registro.
+
+
+Por otra parte, una observación ausente y un conteo igual a cero representan situaciones diferentes. Si falta un dato y su ausencia no es informativa sobre el estado, podemos propagar la distribución hasta la fecha siguiente sin realizar la corrección correspondiente. Si el conteo observado es cero, la innovación sin perturbar de ese canal es $0-z_{k}^{(i)}$ para cada miembro, donde $z_{k}^{(i)}$ denota aquí su predicción escalar. El EnKF corrige sus coordenadas mediante la ganancia y conserva el mismo peso para todos los miembros. Así, la decisión de actualizar la estimación depende tanto del dato disponible como del significado que se asigna a su registro.
 
 \subsection*{Actualización y paso al día siguiente}
 
@@ -195,11 +206,13 @@ En cada miembro pronosticado $x_i=T_k((u_i,\ell_i),e_i)$ evaluamos $z_i=h_k(x_i)
  C_k^{xz}=\frac{1}{M-1}\sum_{i=1}^M(x_i-\bar x)(z_i-\bar z)^{\mathsf T},
  \qquad C_k^{zz}=\frac{1}{M-1}\sum_{i=1}^M(z_i-\bar z)(z_i-\bar z)^{\mathsf T}.
 \]
-La ganancia de la sección anterior es una matriz de $9\times p$. Con la aproximación aditiva para el error de los conteos calculamos $x_i^+=x_i+\widehat K_k(y_k+\varepsilon_i-z_i)$, donde las perturbaciones gaussianas tienen la covarianza de los canales disponibles. Para un dato ausente de manera no informativa se omite ese canal. Si faltan ambos, el pronóstico pasa directamente al siguiente ciclo.
+
+La ganancia de la sección anterior es una matriz de $9\times p$ en el ejemplo sin rezagos y de $(9+L)\times p$ cuando se incorporan los $L$ flujos previos. Con la aproximación aditiva para el error de los conteos calculamos $x_i^+=x_i+\widehat K_k(y_k+\varepsilon_i-z_i)$, donde las perturbaciones gaussianas tienen la covarianza de los canales disponibles. Para un dato ausente de manera no informativa se omite ese canal. Si faltan ambos, el pronóstico pasa directamente al siguiente ciclo.
 
 Volvamos al estado para el EnKF \eqref{eq:estado-enkf}. Si la componente $\log\delta_k$ del pronóstico tiene covarianza con $B_k$, la innovación en las defunciones diarias puede corregir esa componente y, al exponenciarla, la tasa de fallecimiento. Algo similar puede ocurrir con $\beta_k$ y $\gamma_k$, siempre que los efectos de sus variaciones se reflejen en los pronósticos observables. En cada ciclo, el conjunto actualizado proporciona las condiciones iniciales para el siguiente paso, de modo que las observaciones influyen en la trayectoria estimada de los compartimientos y de las tasas.
 
-La corrección aditiva puede generar compartimientos o flujos negativos o alterar la acumulación de recuperaciones y defunciones entre fechas. Los flujos del estado ampliado describen el intervalo recién propagado y se vuelven a calcular en el pronóstico siguiente. Si se reportan sus valores de análisis, hay que comprobar su compatibilidad con los cambios de compartimientos que se quieran interpretar. Antes de propagar el análisis, hay que comprobar la no negatividad de los compartimientos y especificar cómo se tratan los miembros que incumplen esa restricción. La sucesión de análisis por fecha puede revisar los niveles acumulados estimados previamente. Cuando todos los miembros pronosticados comparten el mismo total poblacional, la actualización conserva ese total en aritmética exacta porque su covarianza muestral con la observación pronosticada es cero.
+
+La corrección aditiva puede generar compartimientos o flujos negativos o alterar la acumulación de recuperaciones y defunciones entre fechas. Por ejemplo, para cada miembro el pronóstico de defunciones del intervalo es $B_k^-=D_k^- - D_{k-1}^+$, donde $D_0^+$ es el valor inicial. La diferencia entre análisis consecutivos incluye además la corrección $D_k^+-D_k^-$. Los flujos del estado ampliado describen el intervalo recién propagado y se vuelven a calcular en el pronóstico siguiente. Si se reportan sus valores de análisis, hay que comprobar su compatibilidad con los cambios de compartimientos que se quieran interpretar. Antes de propagar el análisis, hay que comprobar la no negatividad de los compartimientos y especificar cómo se tratan los miembros que incumplen esa restricción. La sucesión de análisis por fecha puede revisar los niveles acumulados estimados previamente. Cuando todos los miembros pronosticados comparten el mismo total poblacional, la actualización conserva ese total en aritmética exacta porque su covarianza muestral con la observación pronosticada es cero.
 
 Una regla explícita posible es proyectar el vector de compartimientos corregido sobre $\Delta_N$ mediante la proyección euclidiana antes de la siguiente integración. Esta operación modifica la distribución del análisis y su frecuencia de uso debe documentarse si se adopta. Conservamos las log-tasas corregidas y repetimos la transición desde $t_k$.
 
