@@ -206,29 +206,70 @@ def kalman_filter(z, F, H, Q, R, x0, P0):
 
     return x_filt, P_filt
 
-def get_Y_obs(df, date_1, date_f, N=None, gamma_time=14, date_col='FECHA_INGRESO'):
+def get_Y_obs(df, date_1, date_f, N=None, gamma_intervals=None,
+              gamma_time=14, date_col='FECHA_INGRESO'):
     """
-    Y  : np.ndarray (T, 3) with columns [I, R, D]
-    df_obs : pd.DataFrame with date index and columns [I, R, D, C] (+ S)
+    Y      : np.ndarray (T, 3) with columns [I, R, D]
+    df_obs : pd.DataFrame with date index and columns [I, R, D, C] (+ S if N given)
+
+    gamma_intervals : list of (start, end, gamma) tuples, e.g.
+                      [('2020-02-28', '2020-03-22', 0.0714), ...]
+                      If None, falls back to a constant gamma_time (in days).
+    gamma_time      : constant recovery period in days, used only when
+                      gamma_intervals is None.
     """
-    df = dates_to_datetime(df.copy(), [date_col, 'FECHA_DEF']) 
-    pos = covid_positive(df)                                   
+    df = dates_to_datetime(df.copy(), [date_col, 'FECHA_DEF'])
+    pos = covid_positive(df)
     idx = pd.date_range(date_1, date_f, freq='D')
 
     # Cumulative cases C = I + R + D
     new = pos.groupby(date_col).size().reindex(idx, fill_value=0)
     C = new.cumsum()
 
-    # Cumulative deaths (only records with FECHA_DEF)
-    D = pos['FECHA_DEF'].dropna().value_counts().reindex(idx, fill_value=0).cumsum()
+    # Cumulative deaths
+    D = (pos['FECHA_DEF'].dropna()
+             .value_counts()
+             .reindex(idx, fill_value=0)
+             .cumsum())
 
-    # Recovered individuals: survivors (FECHA_DEF NaN) shifted by T_rec days
-    surv = pos[pos['FECHA_DEF'].isna()]
-    T_rec = gamma_time  # Number of days for a survivor to move from I to R
-    rec_dates = surv[date_col] + pd.Timedelta(days=T_rec)
-    R = rec_dates.value_counts().reindex(idx, fill_value=0).cumsum()
+    # Survivors: cases without a recorded death
+    surv = pos[pos['FECHA_DEF'].isna()].copy()
 
-    # Active infections
+    if gamma_intervals is not None:
+        # Build a Series: date -> T_rec (in days)
+        t_series = pd.Series(np.nan, index=idx, dtype=float)
+        for start, end, gamma in gamma_intervals:
+            mask = (idx >= pd.Timestamp(start)) & (idx <= pd.Timestamp(end))
+            t_series[mask] = round(1.0 / gamma)
+
+        if t_series.isna().any():
+            missing = idx[t_series.isna()]
+            raise ValueError(
+                f"No gamma defined for dates: "
+                f"{missing[0].date()} ... {missing[-1].date()}"
+            )
+
+        # Assign T_rec to each survivor based on their registration date
+        surv_dates = surv[date_col].clip(
+            upper=pd.Timestamp(date_f)
+        )
+        t_map = t_series.to_dict()
+        t_rec_per_case = surv_dates.map(
+            lambda d: t_map.get(d, np.nan)
+        )
+
+        # Recovery date = registration date + T_rec for that interval
+        rec_dates = surv_dates + pd.to_timedelta(t_rec_per_case, unit='D')
+
+    else:
+        # Constant recovery period
+        surv_dates = surv[date_col].clip(upper=pd.Timestamp(date_f))
+        rec_dates = surv_dates + pd.Timedelta(days=gamma_time)
+
+    R = (rec_dates.value_counts()
+             .reindex(idx, fill_value=0)
+             .cumsum())
+
     I = C - R - D
 
     df_obs = pd.DataFrame({'I': I, 'R': R, 'D': D, 'C': C}, index=idx)
