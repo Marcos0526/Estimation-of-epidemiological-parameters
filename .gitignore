@@ -1,3 +1,4 @@
-Datos/*.csv
+Datos/**
 Tesis_Mestria/**
 Codigos/__pycache__/**
+ayuda/**
