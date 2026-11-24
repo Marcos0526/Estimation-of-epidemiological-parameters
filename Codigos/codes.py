@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates  
-from scipy.linalg import expm
 from scipy.integrate import solve_ivp
 
 ################ 
@@ -159,52 +158,7 @@ def SIRD_simulation(beta, gamma, delta, N, y0, t_max, dt=1.0, verbose=True):
     return t, y, df
 
 ###############
-# Basic Kalman filter
-
-def SIRD_lineal(beta, gamma, delta, s=1.0, dt=1.0): # S/N -> `s`; x = [I, R, D]. Return A (continuous) and F = expm(A * dt) (discrete).
-
-    A = np.array([
-        [beta * s - gamma - delta, 0, 0],
-        [gamma,                    0, 0],
-        [delta,                    0, 0],
-    ])
-    F = expm(A * dt)
-    return A, F
-
-def kalman_filter(z, F, H, Q, R, x0, P0):
-    """
-    Basic Kalman filter.
-
-    z  : (n, m) observations, one row per day
-    F  : (d, d) transition matrix
-    H  : (m, d) observation matrix
-    Q  : (d, d) process-noise covariance matrix
-    R  : (m, m) observation-noise covariance matrix
-    x0, P0 : initial state and covariance
-
-    Returns x_filt (n, d), P_filt (n, d, d)
-    """
-    n, d = len(z), len(x0)
-    x_filt = np.zeros((n, d))
-    P_filt = np.zeros((n, d, d))
-    x, P = x0.copy(), P0.copy()
-
-    for k in range(n):
-        if k > 0:
-            # Prediction
-            x = F @ x
-            P = F @ P @ F.T + Q
-
-        # Update
-        innov = z[k] - H @ x
-        S_k = H @ P @ H.T + R
-        K = P @ H.T @ np.linalg.inv(S_k)
-        x = x + K @ innov
-        P = (np.eye(d) - K @ H) @ P
-
-        x_filt[k], P_filt[k] = x, P
-
-    return x_filt, P_filt
+# SIRD observations
 
 def get_Y_obs(df, date_1, date_f, N=None, gamma_intervals=None,
               gamma_time=14, date_col='FECHA_INGRESO'):

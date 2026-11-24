@@ -1,9 +1,10 @@
 # Estimation of epidemiological parameters
 
 Proyecto para explorar datos epidemiológicos de COVID-19 en México y estudiar
-la evolución de una epidemia mediante modelos compartimentales SIRD y un filtro
-de Kalman. El código de análisis está organizado principalmente en notebooks de
-Jupyter y en las funciones reutilizables de `Codigos/codes.py`.
+la evolución de una epidemia. La tesis estudia el modelo compartimental SIRD
+mediante el filtro de Kalman por ensamble (EnKF). El código de análisis está
+organizado en notebooks de Jupyter y en las funciones reutilizables de
+`Codigos/codes.py`.
 
 ## Estructura del proyecto
 
@@ -22,11 +23,7 @@ Jupyter y en las funciones reutilizables de `Codigos/codes.py`.
 │   ├── 240708 Descriptores_.xlsx
 │   └── Actualizaciones en la presentación de información
 │       referente a casos de COVID.pdf
-├── Seminar/
-│   ├── example_kalman_filter.ipynb
-│   ├── example_kalman_filter copy(español).ipynb
-│   ├── kalman_1_datos.png
-│   └── kalman_2_resultados.png
+├── kalman base/
 ├── .gitattributes
 ├── .gitignore
 ├── LICENSE
@@ -46,12 +43,13 @@ Jupyter y en las funciones reutilizables de `Codigos/codes.py`.
 - **`Codigos/plots.ipynb`**: generación de series acumuladas de casos y
   defunciones.
 - **`Codigos/first_simulation.ipynb`**: primera simulación del modelo SIRD y
-  construcción de observaciones para el filtro de Kalman.
+  construcción de observaciones SIRD.
 - **`Codigos/random.ipynb`**: notebook auxiliar para pruebas o experimentos.
 - **`Datos/`**: catálogos, descriptores y documentación de los datos de
   vigilancia epidemiológica.
-- **`Seminar/`**: ejemplos didácticos del filtro de Kalman, en inglés y
-  español, junto con imágenes de resultados.
+- **`kalman base/`** es el archivo local excluido de Git. Contiene los cuadernos del
+  filtro clásico, su implementación en `classical_kalman.py` y los ejemplos
+  didácticos con sus figuras en `Seminar/`.
 
 Los notebooks hacen referencia a archivos CSV de casos de COVID-19 y a datos
 filtrados que no forman parte del árbol versionado actual. El patrón
@@ -141,36 +139,18 @@ y `df` es el mismo resultado en un `DataFrame` con la columna `dia`. Si
 `verbose=True`, imprime `R0`, el pico de infectados, las muertes finales y el
 error máximo de conservación de la población.
 
-### Filtro de Kalman
+### Observaciones SIRD
 
-#### `SIRD_lineal(beta, gamma, delta, s=1.0, dt=1.0)`
-
-Construye la matriz continua `A` del modelo SIRD linealizado para el estado
-`[I, R, D]`, donde `s` representa la fracción susceptible `S/N`. Calcula la
-matriz de transición discreta `F` mediante la exponencial matricial
-`expm(A * dt)`. Devuelve `(A, F)`.
-
-#### `kalman_filter(z, F, H, Q, R, x0, P0)`
-
-Implementa un filtro de Kalman discreto básico. En cada observación realiza
-una predicción y una actualización, almacenando el estado y la covarianza
-filtrados. Devuelve:
-
-```python
-x_filt, P_filt
-```
-
-`x_filt` tiene una fila por observación y `P_filt` contiene la matriz de
-covarianza correspondiente a cada paso.
-
-#### `get_Y_obs(df, date_1, date_f, N=None, gamma_time=14, date_col='FECHA_INGRESO')`
+#### `get_Y_obs(df, date_1, date_f, N=None, gamma_intervals=None, gamma_time=14, date_col='FECHA_INGRESO')`
 
 Construye las observaciones diarias `[I, R, D]` a partir de los registros
 positivos:
 
 - `C`: casos acumulados según `date_col`.
 - `D`: defunciones acumuladas según `FECHA_DEF`.
-- `R`: recuperados estimados desplazando `gamma_time` días los sobrevivientes.
+- `R`: recuperados estimados al desplazar las fechas de ingreso de los
+  sobrevivientes. El retraso es `gamma_time` días o el inverso redondeado de
+  la tasa de recuperación correspondiente si se proporciona `gamma_intervals`.
 - `I`: infectados activos calculados como `C - R - D`.
 
 Devuelve `Y` como un arreglo NumPy de dimensiones `(T, 3)` y `df_obs`, un
@@ -189,4 +169,4 @@ El módulo utiliza:
 
 El flujo habitual es cargar los datos, convertir las fechas, filtrar los casos
 positivos, generar las series observadas y finalmente ejecutar la simulación
-SIRD o el filtro de Kalman.
+SIRD.
