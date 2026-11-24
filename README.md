@@ -157,6 +157,40 @@ Devuelve `Y` como un arreglo NumPy de dimensiones `(T, 3)` y `df_obs`, un
 `DataFrame` indexado por fecha con las columnas `I`, `R`, `D`, `C` y,
 opcionalmente, `S` cuando se proporciona `N`.
 
+### Estimación de estados y tasas con el EnKF
+
+La función principal, `run_sird_enkf`, recibe las observaciones de
+`get_Y_obs` en el orden `[I, R, D]`. Cada uno de los `M` miembros del
+ensamble representa una trayectoria de `[S, I, R, D, beta, gamma, delta]`.
+Los cuatro primeros valores se expresan en personas y las tres tasas en
+inversos de día.
+
+| Función | Qué hace y qué devuelve |
+| --- | --- |
+| `initialize_sird_ensemble` | Usa la primera observación como centro de los sorteos de `I, R, D`, con desviaciones `state_std`. Calcula `S` por balance y sortea tasas positivas con medianas `initial_rates` y desviaciones logarítmicas `initial_log_std`. Devuelve el ensamble inicial de forma `(M, 7)`. |
+| `gaussian_rate_walk` | Avanza las tasas de cada miembro con incrementos gaussianos independientes en escala logarítmica. Multiplica `log_step_std` por la raíz de la duración del paso en días. Recibe y devuelve una matriz `(M, 3)` de tasas en unidades físicas. |
+| `predict_sird_ensemble` | Llama a `rate_step` para obtener las tasas del intervalo. Con ellas fijas, integra `SIRD` mediante `solve_ivp` desde los compartimientos previos de cada miembro. Devuelve los cuatro compartimientos pronosticados y las tres tasas de cada miembro. |
+| `analyze_sird_ensemble` | Usa `SIRD_OBSERVATION_MATRIX` para extraer `I, R, D` del pronóstico. Calcula la ganancia de Kalman con las covarianzas del ensamble y la covarianza de observación `observation_cov` de forma `(3, 3)`. Para cada miembro, compara su pronóstico con la observación perturbada, actualiza compartimientos y logaritmos de las tasas, y devuelve el ensamble corregido con tasas positivas. |
+| `run_sird_enkf` | Inicializa el ensamble con el primer dato y alterna predicción y análisis desde la segunda fecha. `ensemble_size` fija el número de miembros, `seed` controla los sorteos y `days` permite indicar los tiempos cuando los pasos difieren de un día. |
+
+Para `T` fechas, `run_sird_enkf` devuelve `mean, std, parameters`. Los dos
+primeros arreglos tienen forma `(T, 7)` y contienen la media y la desviación
+estándar muestral entre miembros. El tercero tiene forma `(T, M, 3)`. Por
+ejemplo, `parameters[:, 0, 1]` contiene la trayectoria de recuperación
+$\gamma(t)$ del primer miembro. Para cambiar la evolución de las tasas, se
+pasa otra función con la firma `rate_step(rates, start_day, end_day, rng)`.
+
+Dos funciones internas mantienen las restricciones del modelo.
+`_rate_triplet` valida la longitud, la finitud y el signo de las ternas de
+configuración. `_balance_compartments` corrige los recuentos negativos de
+`I, R, D`, los reduce proporcionalmente si su suma supera `N` y recalcula
+`S = N - I - R - D` en el propio ensamble.
+
+### Funciones de los cuadernos de estimación
+
+- En la estimación de 1167 fechas, `mark_periods(ax)` marca el comienzo de las olas y sombrea los intervalos fuera de ellas. `plot_band(ax, column)` dibuja la media del componente elegido con una banda de una desviación estándar entre miembros. [Cuaderno de estimación](Codigos/first_estimation.ipynb)
+- En el recorrido de 30 fechas con 50 miembros, `analysis_step(forecast, day)` calcula la corrección diaria y devuelve el ensamble actualizado. Durante los primeros diez días, `record(day, operation, values, components, *, shared=False)` guarda los valores de cada operación para construir el DataFrame `operation_log`. `member_trace(member)` recupera las filas del miembro elegido junto con las magnitudes compartidas, como la observación y la ganancia. Por ejemplo, `member_trace(1).query("day == 1")` muestra cómo se actualizó el primer miembro el 29 de febrero de 2020. [Cuaderno paso a paso](Codigos/enkf_30_day_walkthrough.ipynb)
+
 ## Dependencias
 
 El módulo utiliza:
