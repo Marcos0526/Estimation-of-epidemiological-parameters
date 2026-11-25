@@ -1,0 +1,5 @@
+numpy
+pandas
+scipy
+matplotlib>=3.6
+mlflow>=3.0,<4

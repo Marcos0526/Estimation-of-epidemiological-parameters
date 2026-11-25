@@ -342,11 +342,15 @@ def analyze_sird_ensemble(forecast, observation, population, observation_cov, rn
 
 
 def run_sird_enkf(observations, population, *, ensemble_size, state_std, initial_rates,
-                  initial_log_std, rate_step, observation_cov, seed, days=None):
+                  initial_log_std, rate_step, observation_cov, seed, days=None,
+                  return_forecast=False):
     """Filtra Y (T, 3). Devuelve medias, desviaciones (T, 7) y tasas (T, M, 3).
 
     Los resúmenes usan tasas físicas. La primera fila corresponde al ensamble
     inicial condicionado al primer dato. days mide tiempo transcurrido en días.
+
+    With return_forecast=True, append the (T, 3) forecast mean for I, R, D.
+    The first row is NaN because initialization already uses the first observation.
     """
     observations = np.asarray(observations, dtype=float)
     if observations.ndim != 2 or observations.shape[1] != 3 or len(observations) == 0:
@@ -365,14 +369,19 @@ def run_sird_enkf(observations, population, *, ensemble_size, state_std, initial
     mean = np.empty((len(days), 7))
     std = np.empty_like(mean)
     parameters = np.empty((len(days), ensemble_size, 3))
+    forecast_mean = np.full((len(days), 3), np.nan) if return_forecast else None
     for k, day in enumerate(days):
         # El primer dato ya intervino en la inicialización.
         if k > 0:
             forecast = predict_sird_ensemble(ensemble, population, days[k - 1], day,
                                              rate_step, rng)
+            if forecast_mean is not None:
+                forecast_mean[k] = forecast[:, 1:4].mean(axis=0)
             ensemble = analyze_sird_ensemble(forecast, observations[k], population,
                                              observation_cov, rng)
         mean[k] = ensemble.mean(axis=0)
         std[k] = ensemble.std(axis=0, ddof=1)
         parameters[k] = ensemble[:, 4:]
+    if forecast_mean is not None:
+        return mean, std, parameters, forecast_mean
     return mean, std, parameters
