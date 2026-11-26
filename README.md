@@ -6,6 +6,11 @@ mediante el filtro de Kalman por ensamble (EnKF). El código de análisis está
 organizado en notebooks de Jupyter y en las funciones reutilizables de
 `Codigos/codes.py`.
 
+Consulta el [contexto de investigación](markdowns/resume.md), la [nota de
+implementación](markdowns/Codigos/first_estmation.md) y el [recorrido de la
+primera estimación](markdowns/Codigos/recorrido_primera_estimacion.md). Las
+instrucciones locales para agentes están en `markdowns/AGENTS.md`.
+
 ## Estructura del proyecto
 
 ```text
@@ -23,7 +28,8 @@ organizado en notebooks de Jupyter y en las funciones reutilizables de
 │   ├── 240708 Descriptores_.xlsx
 │   └── Actualizaciones en la presentación de información
 │       referente a casos de COVID.pdf
-├── kalman base/
+├── kalman_base/
+├── markdowns/
 ├── .gitattributes
 ├── .gitignore
 ├── LICENSE
@@ -47,7 +53,7 @@ organizado en notebooks de Jupyter y en las funciones reutilizables de
 - **`Codigos/random.ipynb`**: notebook auxiliar para pruebas o experimentos.
 - **`Datos/`**: catálogos, descriptores y documentación de los datos de
   vigilancia epidemiológica.
-- **`kalman base/`** es el archivo local excluido de Git. Contiene los cuadernos del
+- **`kalman_base/`** es el archivo local excluido de Git. Contiene los cuadernos del
   filtro clásico, su implementación en `classical_kalman.py` y los ejemplos
   didácticos con sus figuras en `Seminar/`.
 

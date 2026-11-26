@@ -1,6 +1,6 @@
 # Primera estimación de las tasas del SIRD
 
-El [cuaderno de estimación](first_estimation.ipynb) aplica un EnKF continuo desde el 28 de febrero de 2020 (día 0) hasta el 9 de mayo de 2023 (día 1166). Conserva el ensamble al pasar del periodo previo al confinamiento a cada una de las seis olas. Para reproducirlo, abre el cuaderno con el intérprete de `uni` y ejecuta las celdas en orden. La primera celda de código reúne el intervalo, el archivo y los hiperparámetros. Las funciones del filtro están al final de [codes.py](codes.py).
+El [cuaderno de estimación](../../Codigos/first_estimation.ipynb) aplica un EnKF continuo desde el 28 de febrero de 2020 (día 0) hasta el 9 de mayo de 2023 (día 1166). Conserva el ensamble al pasar del periodo previo al confinamiento a cada una de las seis olas. Para reproducirlo, abre el cuaderno con el intérprete de `uni` y ejecuta las celdas en orden. La primera celda de código reúne el intervalo, el archivo y los hiperparámetros. Las funciones del filtro están al final de [codes.py](../../Codigos/codes.py).
 
 ## De los registros a las tres observaciones
 
@@ -14,7 +14,7 @@ La función existente `get_Y_obs` selecciona los casos positivos (clasificación
 2. `initialize_sird_ensemble` reserva una matriz de 160 filas y siete columnas. Cada fila representa una realización completa de $[S,I,R,D,\beta,\gamma,\delta]$. El primer dato del intervalo es $[2,0,0]$.
 3. Para cada miembro se sortean $I,R,D$ de forma independiente alrededor de ese primer dato. `STATE_STD = [1, 0, 0]` da una desviación de una persona a los activos y fija ambos acumulados iniciales en cero. Las realizaciones son continuas, como los compartimientos de la ecuación diferencial.
 4. `_balance_compartments` lleva a cero los recuentos negativos. Si $I+R+D>N$, reduce esos tres valores en la misma proporción hasta que sumen $N$. A continuación obtiene $S=N-I-R-D$. Con ello cada miembro comienza con la misma población. Estos ajustes de frontera pueden desplazar la media respecto al centro del sorteo.
-5. Para cada miembro y cada tasa se sortea un valor normal en escala logarítmica, centrado en el logaritmo de la mediana inicial. Las medianas son $0.3508$, $0.0714$ y $0.0015$ por día, tomadas de [first_simulation.ipynb](first_simulation.ipynb). Las desviaciones iniciales en esa escala son $0.35$, $0.40$ y $0.50$. Al exponenciar, cada tasa es positiva. `_rate_triplet` comprueba la forma, finitud y signo de las ternas de configuración.
+5. Para cada miembro y cada tasa se sortea un valor normal en escala logarítmica, centrado en el logaritmo de la mediana inicial. Las medianas son $0.3508$, $0.0714$ y $0.0015$ por día, tomadas de [first_simulation.ipynb](../../Codigos/first_simulation.ipynb). Las desviaciones iniciales en esa escala son $0.35$, $0.40$ y $0.50$. Al exponenciar, cada tasa es positiva. `_rate_triplet` comprueba la forma, finitud y signo de las ternas de configuración.
 6. Se registran la media y la desviación estándar muestral de las siete columnas y se guardan las tres tasas de cada miembro. Como el primer dato ya intervino en la construcción del ensamble, el primer análisis de Kalman corresponde al segundo día.
 
 ## Qué ocurre entre dos fechas
